@@ -1,8 +1,7 @@
 #ifndef PISTA_PISTA_H_
 #define PISTA_PISTA_H_
 
-#include "../Remonte/Remonte.h"
-//#include "../Pista/Pista.h"
+//#include "../Remonte/Remonte.h"
 
 typedef struct{
 	int id;

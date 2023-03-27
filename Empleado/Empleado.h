@@ -22,4 +22,6 @@ typedef struct{
 	char* contraseña;
 }Empleado;
 
+void imprimirEmpleadoLargo(Empleado e);
+
 #endif /* EMPLEADO_EMPLEADO_H_ */

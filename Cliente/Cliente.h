@@ -13,6 +13,6 @@ typedef struct{
 	char* sexo;
 }Cliente;
 
-void imprimirCliente(Cliente c);
+void imprimirClienteLargo(Cliente c);
 
 #endif /* CLIENTE_CLIENTE_H_ */

@@ -8,12 +8,14 @@
 #ifndef FORFAIT_FORFAIT_H_
 #define FORFAIT_FORFAIT_H_
 
+#include "../Cliente/Cliente.h"
+
 typedef struct{
 	int id;
 	float precio;
 	int duracion;
 	char* fecha;
-//	Cliente cliente;
+	Cliente cliente;
 }Forfait;
 
 #endif /* FORFAIT_FORFAIT_H_ */
