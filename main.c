@@ -44,10 +44,22 @@ int gestionarEstacion(){
 	printf("4. Clases\n");
 	printf("5. Visualizar forfaits\n");
 	printf("6. Remontes\n");
+	printf("7. Volver\n");
 	printf("Introduzca la opción: ");
-		scanf("%i", &opcion);
-		return opcion;
+	scanf("%i", &opcion);
 
+	return opcion;
+}
+
+int gestionarClases(){
+	int opcion = 0;
+	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
+	printf("1. Añadir alumno\n");
+	printf("2. Eliminar alumno\n");
+	printf("3. Cambiar estado\n");
+	printf("4. Volver\n");
+	printf("Introduzca la opción: ");
+	scanf("%i", &opcion);
 	return opcion;
 }
 
@@ -94,11 +106,30 @@ int main(){
 						} else if (opcionEstacion == 3){
 
 						} else if (opcionEstacion == 4){
+							int opcionClases = 0;
+							while(opcionClases != 1 && opcionClases != 2 && opcionClases != 3 && opcionClases !=4){
 
+								opcionClases = gestionarClases();
+								if(opcionClases == 1){
+
+								} else if(opcionClases == 2){
+
+								} else if(opcionClases == 3){
+
+								} else if(opcionClases == 4){
+
+								} else {
+									printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionClases);
+								}
+							}
 						} else if (opcionEstacion == 5){
 
 						} else if (opcionEstacion == 6){
 
+						} else if (opcionEstacion == 7){
+
+						} else {
+							printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionEstacion);
 						}
 					}
 				} else if (opcionMenu == 2) {
@@ -107,7 +138,7 @@ int main(){
 				} else if (opcionMenu == 3) {
 
 				} else if (opcionMenu == 4) {
-
+					exit(-1);
 				} else {
 					printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionMenu);
 				}
@@ -127,5 +158,3 @@ int main(){
 
 	return 0;
 }
-
-
