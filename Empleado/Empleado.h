@@ -8,6 +8,8 @@
 #ifndef EMPLEADO_EMPLEADO_H_
 #define EMPLEADO_EMPLEADO_H_
 
+#include "sqlite3.h"
+
 typedef struct{
 	int id;
 	char* nombre;
@@ -23,5 +25,11 @@ typedef struct{
 }Empleado;
 
 void imprimirEmpleadoLargo(Empleado e);
+
+int loginEmpleado(Empleado* empleados, int tamanyo);
+
+Empleado* registrarEmpleado(Empleado* empleados);
+
+void leerDatosFichero();
 
 #endif /* EMPLEADO_EMPLEADO_H_ */
