@@ -1,6 +1,6 @@
 #include <string.h>
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include "Empleado.h"
 #include "sqlite3.h"
 
@@ -79,27 +79,24 @@ Empleado* registrarEmpleado(Empleado* empleados){
 	return empleados;
 }
 
-void leerDatosFichero(){
-//	FILE* f;
-//	char c;
-//
-//	int num_lines = 0;
-//	// Abrir fichero
-//	f = fopen("empleados.txt", "r");
+void leerDatosFichero(char* fichero, Empleado* empleados){
+	FILE* f;
+	char c;
 
-	printf("Espera mientras se importan los datos...");
+	int num_lines = 0;
+	// Abrir fichero
+	f = fopen(fichero, "r");
 
-//	while((c = fgetc(f)) != EOF){
-//		if(c == '\n'){
-//			num_lines++;
-//
-//		}
-//		putchar(c);
-//	}
-//
-//	fclose(f);
+	while((c = fgetc(f)) != EOF){
+		if(c == '\n'){
+			num_lines++;
 
-	printf("Datos importados!\n 0 empleados añadidos al sistema");
+		}
+		putchar(c);
+	}
 
-//	return num_lines;
+	fclose(f);
+
+	printf("-------------------------------------------------------------------------\nEl fichero tiene %i líneas", num_lines);
 }
+

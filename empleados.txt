@@ -1,0 +1,20 @@
+00-Juan-Rodriguez-2500-Bilbao-Administrativo-678594214-M-1-3-juan-1
+01-Marta-Fernandez-3000-Madrid-Administrativo-6123498762-F-2-3-marta-2
+02-Iker-Gonzalez-1700-Barcelona-Administrativo-6481948392-M-3-3-iker-3
+03-Maria-Hernandez-1000-Valencia-Administrativo-6274839184-F-4-3-Maria-4
+04-Alberto-Burgoa-3500-Bilbao-Administrativo-671838492-M-5-3-Alberto-5
+05-Jimena-Barrutia-2800-Barcelona-Profesor-672829838-F-1-1-Jimena-1
+06-Manolo-Vela-2000-Madrid-Profesor-618492039-M-2-1-manolo-2
+07-Andrea-Velarde-1750-Salamanca-Profesor-617583204-F-3-1-andrea-3
+08-Beñat-Fernandez-1789-Granada-Profesor-646638434-M-4-1-beñat-4
+09-Ane-Hierro-2500-Bilbao-Profesor-685768492-F-5-1-ane-5
+10-Pablo-Capelastegui-2310-Lezama-Limpieza-672839409-M-1-1-pablo-1
+11-Patricia-Angulo-2679-Getxo-Limpieza-672839205-F-2-1-patricia-2
+12-Oscar-Perez-1400-Bilbao-Limpieza-678354913-M-3-1-oscar-3
+13-Izaskun-Montoya-3200-Sestao-Limpieza-617458373-F-4-1-izaskun-4
+14-Koldo-Alonso-3500-Bilbao-Limpieza-647294756-M-5-1-koldo-5
+15-Alba-Mateos-3200-Abatxolo-Mantenimiento-628374628-F-1-2-alba-1
+16-Unai-Cid-2800-Madrid-Mantenimiento-673859680-M-2-2-unai-2
+17-Maria-Barcala-1900-Gorliz-Mantenimiento-685920495-F-3-2-maria-3
+18-Jon Ander-Olivera-2000-Bilbao-Mantenimiento-678534256-M-4-2-jonander-4
+19-Itxaso-Garcia-2500-Bilbao-Mantenimiento-678906548-F-5-2-itxaso-5

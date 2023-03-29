@@ -19,6 +19,7 @@ typedef struct{
 	char* puesto;
 	int telefono;
 	char* sexo;
+	int idEstacion;
 	int nivelPuesto;
 	char* nombreUsuario;
 	char* contraseña;
@@ -30,6 +31,6 @@ int loginEmpleado(Empleado* empleados, int tamanyo);
 
 Empleado* registrarEmpleado(Empleado* empleados);
 
-void leerDatosFichero();
+void leerDatosFichero(char* fichero, Empleado* empleados);
 
 #endif /* EMPLEADO_EMPLEADO_H_ */

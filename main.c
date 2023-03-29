@@ -133,8 +133,8 @@ int main(){
 						}
 					}
 				} else if (opcionMenu == 2) {
-					leerDatosFichero();
-					opcionMenu = menuPrincipal();
+					leerDatosFichero("empleados.txt", empleados);
+//					opcionMenu = menuPrincipal();
 				} else if (opcionMenu == 3) {
 
 				} else if (opcionMenu == 4) {
@@ -146,6 +146,8 @@ int main(){
 
 
 		} else if(opcionLogin == 2){
+			printf("\n");
+			printf("EMPLEADOS\n-------------------------------------------------------------------------\n");
 			empleados = registrarEmpleado(empleados);
 			printf("\n");
 			opcionLogin = ventanaInicial();
