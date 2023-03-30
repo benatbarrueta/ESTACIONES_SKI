@@ -2,31 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Empleado.h"
-#include "sqlite3.h"
+#include "../sqlite3.h"
 
 
 void imprimirEmpleadoLargo(Empleado e){
-	printf("Empleado número %i:\n- Nombre: %s\n- Apellido: %s\n- Salario: %.2f\n- Direccion: %s\n- Puesto: %s\n- Telefono: %i\n- Sexo: %s\n- Nivel de puesto: %i\n- Nombre de usuario: %s\n- Contraseña: %s\n", e.id, e.nombre, e.apellido, e.salario, e.direccion, e.puesto, e.telefono, e.sexo, e.nivelPuesto, e.nombreUsuario, e.contraseña);
+	printf("Empleado número %i:\n- Nombre: %s\n- Apellido: %s\n- Salario: %.2f\n- Direccion: %s\n- Puesto: %s\n- Telefono: %i\n- Sexo: %s\n- Nivel de puesto: %i\n- Nombre de usuario: %s\n- contrasenya: %s\n", e.id, e.nombre, e.apellido, e.salario, e.direccion, e.puesto, e.telefono, e.sexo, e.nivelPuesto, e.nombreUsuario, e.contrasenya);
 }
 
 int loginEmpleado(Empleado* empleados, int tamanyo){
 	int resultado = 0;
 	char nombreUsuario[10];
-	char contraseña[10];
+	char contrasenya[10];
 	printf("\n----------------------------\n\n");
 	printf("INICIO DE SESIÓN\n");
 	printf("Nombre de usuario: ");
 	scanf("%s", nombreUsuario);
-	printf("Contraseña: ");
-	scanf("%s", contraseña);
+	printf("contrasenya: ");
+	scanf("%s", contrasenya);
 
 	for (int i = 0; i < tamanyo; ++i) {
-		if(strcmp(empleados[i].nombreUsuario, nombreUsuario) == 0 && strcmp(empleados[i].contraseña, contraseña) == 0){
+		if(strcmp(empleados[i].nombreUsuario, nombreUsuario) == 0 && strcmp(empleados[i].contrasenya, contrasenya) == 0){
 			printf("\nLogin correcto!\n");
 			resultado = 1;
 			break;
-		} else if (strcmp(empleados[i].nombreUsuario, nombreUsuario) == 0 && strcmp(empleados[i].contraseña, contraseña) != 0){
-			printf("\nHas introducido mal la contraseña\n");
+		} else if (strcmp(empleados[i].nombreUsuario, nombreUsuario) == 0 && strcmp(empleados[i].contrasenya, contrasenya) != 0){
+			printf("\nHas introducido mal la contrasenya\n");
 			resultado = 0;
 			break;
 		} else {
@@ -48,7 +48,7 @@ Empleado* registrarEmpleado(Empleado* empleados){
 	char sexo[1];
 	int nivelPuesto;
 	char nombreUsuario[10];
-	char contraseña[10];
+	char contrasenya[10];
 	printf("\n----------------------------\n\n");
 	printf("REGISTRO DE EMPLEADOS\n");
 	printf("Nombre: ");
@@ -69,10 +69,10 @@ Empleado* registrarEmpleado(Empleado* empleados){
 	scanf("%i", &nivelPuesto);
 	printf("Nombre de usuario: ");
 	scanf("%s", nombreUsuario);
-	printf("Contraseña: ");
-	scanf("%s", contraseña);
+	printf("contrasenya: ");
+	scanf("%s", contrasenya);
 
-	Empleado p = {0, nombre, apellido, salario, direccion, puesto, telefono, sexo, nivelPuesto, nombreUsuario, contraseña};
+	Empleado p = {0, nombre, apellido, salario, direccion, puesto, telefono, sexo, nivelPuesto, nombreUsuario, contrasenya};
 	empleados[p.id-1] = p;
 	printf("\n\nEl empleado a añadir es: \n");
 	imprimirEmpleadoLargo(p);

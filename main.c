@@ -19,6 +19,7 @@ int ventanaInicial(){
 	printf("2. Registrarse\n");
 	printf("3. Salir\n");
 	printf("Introduzca la opción: ");
+	fflush(stdout);
 	scanf("%i", &opcion);
 	return opcion;
 }
@@ -77,7 +78,7 @@ int main(){
 	empleados = malloc(sizeof(Empleado)*20);
 
 	empleados[0].nombreUsuario = "juan";
-	empleados[0].contraseña = "1";
+	empleados[0].contrasenya = "1";
 
 	int opcionLogin = 0;
 	while(opcionLogin != 1 && opcionLogin !=2 && opcionLogin !=3){

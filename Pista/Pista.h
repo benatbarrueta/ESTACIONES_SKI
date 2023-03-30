@@ -8,7 +8,7 @@ typedef struct{
 	char* nombre;
 	char* dificultad;
 	int idEstacion;
-	int cañones;
+	int canyones;
 	int numRemontes;
 	int* idRemonte;
 }Pista;

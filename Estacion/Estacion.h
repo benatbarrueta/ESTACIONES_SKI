@@ -18,7 +18,7 @@
 typedef struct{
 	int id;
 	char* nombre;
-	char* dirección;
+	char* direccion;
 	char* horario;
 	Cliente* clientes;
 	Empleado* empleados;
