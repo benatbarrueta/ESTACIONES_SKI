@@ -31,6 +31,6 @@ int loginEmpleado(Empleado* empleados, int tamanyo);
 
 Empleado* registrarEmpleado(Empleado* empleados);
 
-void leerDatosFichero(char* fichero, Empleado* empleados);
+void leerDatosFichero(char* fichero);
 
 #endif /* EMPLEADO_EMPLEADO_H_ */

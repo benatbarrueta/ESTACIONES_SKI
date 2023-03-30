@@ -12,19 +12,59 @@
 #include "Pista/Pista.h"
 #include "Remonte/Remonte.h"
 
-int ventanaInicial(){
+void ventanaInicial(Empleado* empleados, int tamanyo);
+
+void menuPrincipal();
+
+void gestionarEstacion();
+
+void gestionarClases();
+
+void gestionarClases();
+
+int main(){
+
+	Empleado* empleados;
+	empleados = malloc(sizeof(Empleado)*20);
+
+	empleados[0].nombreUsuario = "juan";
+	empleados[0].contrasenya = "1";
+
+
+	ventanaInicial(empleados, 20);
+
+	return 0;
+}
+
+void ventanaInicial(Empleado* empleados, int tamanyo){
 	int opcion = 0;
 	printf("GESTION DE ESTACIÓN DE SKI\n");
 	printf("1. Iniciar sesión\n");
 	printf("2. Registrarse\n");
 	printf("3. Salir\n");
 	printf("Introduzca la opción: ");
-	fflush(stdout);
 	scanf("%i", &opcion);
-	return opcion;
+
+	if(opcion == 1){
+		int resultado = loginEmpleado(empleados, tamanyo);
+		if(resultado == 1){
+			menuPrincipal();
+		}
+	} else if (opcion == 2){
+		printf("\n");
+		printf("EMPLEADOS\n-------------------------------------------------------------------------\n");
+		registrarEmpleado(empleados);
+		printf("\n");
+	} else if (opcion == 3){
+		exit(-1);
+	} else {
+		printf("\n");
+		ventanaInicial(empleados, tamanyo);
+	}
+
 }
 
-int menuPrincipal(){
+void menuPrincipal(){
 	int opcion = 0;
 	printf("\n----------------------------\n\nMENU PRINCIPAL\n");
 	printf("1. Gestionar estación\n");
@@ -33,10 +73,23 @@ int menuPrincipal(){
 	printf("4. Salir\n");
 	printf("Introduzca la opción: ");
 	scanf("%i", &opcion);
-	return opcion;
+
+	if (opcion == 1){
+		gestionarEstacion();
+	} else if (opcion == 2){
+		leerDatosFichero("empleados.txt");
+		menuPrincipal();
+	} else if (opcion == 3){
+
+	} else if (opcion == 4){
+		exit(-1);
+	} else {
+		printf("\n");
+		menuPrincipal();
+	}
 }
 
-int gestionarEstacion(){
+void gestionarEstacion(){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR ESTACION\n");
 	printf("1. Habilitar/deshabilitar pista\n");
@@ -49,10 +102,27 @@ int gestionarEstacion(){
 	printf("Introduzca la opción: ");
 	scanf("%i", &opcion);
 
-	return opcion;
+	if (opcion == 1) {
+
+	} else if (opcion == 2) {
+
+	} else if (opcion == 3) {
+
+	} else if (opcion == 4) {
+		gestionarClases();
+	} else if (opcion == 5) {
+
+	} else if (opcion == 6) {
+
+	} else if (opcion == 7) {
+		menuPrincipal();
+	} else {
+		printf("\n");
+		gestionarEstacion();
+	}
 }
 
-int gestionarClases(){
+void gestionarClases(){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
 	printf("1. Añadir alumno\n");
@@ -61,103 +131,17 @@ int gestionarClases(){
 	printf("4. Volver\n");
 	printf("Introduzca la opción: ");
 	scanf("%i", &opcion);
-	return opcion;
-}
 
-int main(){
+	if (opcion == 1) {
 
-	sqlite3 *db;
+	} else if (opcion == 2) {
 
-	int result = sqlite3_open("estaciones.sqlite", &db);
-	if (result != SQLITE_OK) {
-		printf("Error al abrir la bd\n");
-		return result;
+	} else if (opcion == 3) {
+
+	} else if (opcion == 4) {
+		gestionarEstacion();
+	} else {
+		printf("\n");
+		gestionarClases();
 	}
-
-	Empleado* empleados;
-	empleados = malloc(sizeof(Empleado)*20);
-
-	empleados[0].nombreUsuario = "juan";
-	empleados[0].contrasenya = "1";
-
-	int opcionLogin = 0;
-	while(opcionLogin != 1 && opcionLogin !=2 && opcionLogin !=3){
-
-		opcionLogin = ventanaInicial();
-		if (opcionLogin == 1){
-			int resultado = 0;
-			while(resultado != 1) {
-				resultado = loginEmpleado(empleados, 20);
-			}
-
-			int opcionMenu = 0;
-			while(opcionMenu != 1 && opcionMenu != 2 && opcionMenu != 3 && opcionMenu != 4){
-
-				opcionMenu = menuPrincipal();
-				if (opcionMenu == 1){
-
-					int opcionEstacion = 0;
-					while(opcionEstacion != 1 && opcionEstacion != 2 && opcionEstacion != 3 && opcionEstacion != 4 && opcionEstacion != 5 && opcionEstacion != 6){
-
-						opcionEstacion = gestionarEstacion();
-						if(opcionEstacion == 1){
-
-						} else if (opcionEstacion == 2){
-
-						} else if (opcionEstacion == 3){
-
-						} else if (opcionEstacion == 4){
-							int opcionClases = 0;
-							while(opcionClases != 1 && opcionClases != 2 && opcionClases != 3 && opcionClases !=4){
-
-								opcionClases = gestionarClases();
-								if(opcionClases == 1){
-
-								} else if(opcionClases == 2){
-
-								} else if(opcionClases == 3){
-
-								} else if(opcionClases == 4){
-
-								} else {
-									printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionClases);
-								}
-							}
-						} else if (opcionEstacion == 5){
-
-						} else if (opcionEstacion == 6){
-
-						} else if (opcionEstacion == 7){
-
-						} else {
-							printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionEstacion);
-						}
-					}
-				} else if (opcionMenu == 2) {
-					leerDatosFichero("empleados.txt", empleados);
-					opcionMenu = menuPrincipal();
-				} else if (opcionMenu == 3) {
-
-				} else if (opcionMenu == 4) {
-					exit(-1);
-				} else {
-					printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionMenu);
-				}
-			}
-
-
-		} else if(opcionLogin == 2){
-			printf("\n");
-			printf("EMPLEADOS\n-------------------------------------------------------------------------\n");
-			empleados = registrarEmpleado(empleados);
-			printf("\n");
-			opcionLogin = ventanaInicial();
-		} else if (opcionLogin == 3){
-			exit(-1);
-		} else {
-			printf("El número %i no es válido, vuelva a intentarlo\n----------------------------\n", opcionLogin);
-		}
-	}
-
-	return 0;
 }

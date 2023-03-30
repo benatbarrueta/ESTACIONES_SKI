@@ -17,7 +17,7 @@ int loginEmpleado(Empleado* empleados, int tamanyo){
 	printf("INICIO DE SESIÓN\n");
 	printf("Nombre de usuario: ");
 	scanf("%s", nombreUsuario);
-	printf("contrasenya: ");
+	printf("Contraseña: ");
 	scanf("%s", contrasenya);
 
 	for (int i = 0; i < tamanyo; ++i) {
@@ -79,7 +79,7 @@ Empleado* registrarEmpleado(Empleado* empleados){
 	return empleados;
 }
 
-void leerDatosFichero(char* fichero, Empleado* empleados){
+void leerDatosFichero(char* fichero){
 	FILE* f;
 	char c;
 
