@@ -33,4 +33,6 @@ Empleado* registrarEmpleado(Empleado* empleados);
 
 void leerDatosFichero(char* fichero);
 
+int deleteAllEmpleados(sqlite3 *db);
+
 #endif /* EMPLEADO_EMPLEADO_H_ */

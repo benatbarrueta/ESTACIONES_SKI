@@ -80,6 +80,8 @@ Empleado* registrarEmpleado(Empleado* empleados){
 }
 
 void leerDatosFichero(char* fichero){
+	printf("\n-----------------------------------------------------------------------------------------------------------------------------------\n");
+	printf("ID    NOMBRE    APELLIDO    SALARIO  CIUDAD    PUESTO \t      TELEFONO  SEXO  ESTACION  NIVEL PUESTO  NOMBRE DE USUARIO  CONTRASEÑA\n");
 	FILE* f;
 	char c;
 
@@ -97,6 +99,5 @@ void leerDatosFichero(char* fichero){
 
 	fclose(f);
 
-	printf("-------------------------------------------------------------------------\nEl fichero tiene %i líneas", num_lines);
+	printf("\n-----------------------------------------------------------------------------------------------------------------------------------\nEl fichero tiene %i líneas", num_lines);
 }
-
