@@ -6,10 +6,11 @@
 typedef struct{
 	int id;
 	char* nombre;
-	char* dificultado;
+	char* dificultad;
 	int idEstacion;
 	int cañones;
-	int* idPista;
+	int numRemontes;
+	int* idRemonte;
 }Pista;
 
 #endif /* PISTA_PISTA_H_ */

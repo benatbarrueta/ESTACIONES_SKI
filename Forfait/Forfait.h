@@ -13,10 +13,12 @@
 typedef struct{
 	int id;
 	float precio;
-	int duracion;
+	char* duracion;
 	char* fecha;
 	int idEstacion;
 	int idCliente;
 }Forfait;
+
+void imprimirForfait(Forfait f);
 
 #endif /* FORFAIT_FORFAIT_H_ */

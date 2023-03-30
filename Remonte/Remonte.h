@@ -7,7 +7,10 @@ typedef struct{
 	int id;
 	int plazas;
 	int idEstacion;
-	int* idPista;
+	int idPistaInicio;
+	int idPistaFin;
 }Remonte;
+
+void imprimirRemonte(Remonte r);
 
 #endif
