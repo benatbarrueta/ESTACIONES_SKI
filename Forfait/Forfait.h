@@ -16,7 +16,7 @@ typedef struct{
 	int duracion;
 	char* fecha;
 	int idEstacion;
-	Cliente cliente;
+	int idCliente;
 }Forfait;
 
 #endif /* FORFAIT_FORFAIT_H_ */
