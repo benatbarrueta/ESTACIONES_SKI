@@ -16,7 +16,8 @@ typedef struct{
 	float precio;
 	char* tipo;
 	char* fecha;
-	Cliente cliente;
+	int idEstacion;
+	int idCliente;
 }Material;
 
 #endif /* MATERIAL_MATERIAL_H_ */

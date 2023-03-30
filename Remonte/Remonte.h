@@ -6,7 +6,8 @@
 typedef struct{
 	int id;
 	int plazas;
-	Pista* pistas;
+	int idEstacion;
+	int* idPista;
 }Remonte;
 
 #endif

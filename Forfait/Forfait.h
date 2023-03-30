@@ -15,6 +15,7 @@ typedef struct{
 	float precio;
 	int duracion;
 	char* fecha;
+	int idEstacion;
 	Cliente cliente;
 }Forfait;
 

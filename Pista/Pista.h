@@ -7,8 +7,9 @@ typedef struct{
 	int id;
 	char* nombre;
 	char* dificultado;
+	int idEstacion;
 	int cañones;
-//	Remonte* remontes;
+	int* idPista;
 }Pista;
 
 #endif /* PISTA_PISTA_H_ */

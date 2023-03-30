@@ -11,6 +11,7 @@ typedef struct{
 	int telefono;
 	char* fechaNcto;
 	char* sexo;
+	int idEstacion;
 }Cliente;
 
 void imprimirClienteLargo(Cliente c);

@@ -134,7 +134,7 @@ int main(){
 					}
 				} else if (opcionMenu == 2) {
 					leerDatosFichero("empleados.txt", empleados);
-//					opcionMenu = menuPrincipal();
+					opcionMenu = menuPrincipal();
 				} else if (opcionMenu == 3) {
 
 				} else if (opcionMenu == 4) {
