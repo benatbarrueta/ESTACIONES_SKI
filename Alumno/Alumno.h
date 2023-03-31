@@ -13,7 +13,7 @@ typedef struct {
 	char* pagado;
 }Alumno;
 
-void añadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
+void anyadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
 
 void eliminarAlumno(Alumno* alumnos, int tamanyoAlumnos);
 

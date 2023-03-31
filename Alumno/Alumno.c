@@ -5,7 +5,7 @@
 
 #include "../CLiente/Cliente.h"
 
-void añadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos){
+void anyadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos){
 	leerDatosClientes("clientes.txt");
 
 	int opcion = 0;

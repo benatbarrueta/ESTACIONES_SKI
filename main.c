@@ -13,11 +13,13 @@
 #include "Remonte/Remonte.h"
 #include "Alumno/Alumno.h"
 
-void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
+void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
 
-void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
+void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
 
-void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
+void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
+
+void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
 
 int main(){
 
@@ -68,18 +70,20 @@ int main(){
 	clientes[28].id = 28;clientes[28].nombre = "Itxaso";clientes[28].apellido = "Bilbao";clientes[28].correo = "itxasobilbao@gmail.com";clientes[28].edad = 7;clientes[28].idEstacion = 3;clientes[28].sexo = "F";clientes[28].telefono = 637483544;
 
 
-	Alumno* alumnos;
+	Alumno* alumnos = NULL;
+
+	Material* materiales = NULL;
 
 	escribirDatosAlumnos("clientes.txt", clientes, 29);
 
-	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0);
+	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0, materiales, 0);
 
 
 
 	return 0;
 }
 
-void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos){
+void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
 	int opcion = 0;
 	printf("GESTION DE ESTACIÓN DE SKI\n");
 	printf("1. Iniciar sesión\n");
@@ -91,7 +95,7 @@ void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes
 	if(opcion == 1){
 		int resultado = loginEmpleado(empleados, tamanyoEmpleados);
 		if(resultado == 1){
-			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 		}
 	} else if (opcion == 2){
 		printf("\n");
@@ -102,47 +106,50 @@ void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes
 		exit(-1);
 	} else {
 		printf("\n");
-		ventanaInicial(empleados, tamanyoEmpleados, clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		ventanaInicial(empleados, tamanyoEmpleados, clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	}
 
 }
 
-void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos){
+void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
 	int opcion = 0;
-	printf("\n----------------------------\n\nGESTIONAR ESTACION\n");
-	printf("1. Mostrar estado de las pistas\n");
+	printf("\n----------------------------\n\nGESTIONAR ESTACIONES\n");
+	printf("1. Sección de pistas\n");
 	printf("2. Sección de material\n");
 	printf("3. Sección de clases\n");
-	printf("4. Mostrar forfaits\n");
-	printf("5. Mostrar Remontes\n");
-	printf("6. Mostrar todos los empleados\n");
-	printf("7. Salir\n");
+	printf("4. Mostrar estaciones");
+	printf("5. Mostrar forfaits\n");
+	printf("6. Mostrar Remontes\n");
+	printf("7. Mostrar todos los empleados\n");
+	printf("8. Salir\n");
 	printf("Introduzca la opción: ");
 	scanf("%i", &opcion);
 
 	if (opcion == 1) {
 
 	} else if (opcion == 2) {
-
+		gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 3) {
-		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 4) {
-
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 5) {
-
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 6) {
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+	} else if (opcion == 7) {
 		leerDatosFichero("empleados.txt");
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 7) {
 
 		exit(-1);
 	} else{
 		printf("\n");
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	}
 }
 
-void gestionarClases(Cliente* clientes,int tamanyoClientes,  Alumno* alumnos, int tamanyoAlumnos){
+void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
 	printf("1. Añadir alumno\n");
@@ -153,15 +160,37 @@ void gestionarClases(Cliente* clientes,int tamanyoClientes,  Alumno* alumnos, in
 	scanf("%i", &opcion);
 
 	if (opcion == 1) {
-		añadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		anyadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else if (opcion == 2) {
 		eliminarAlumno(alumnos, tamanyoAlumnos);
 	} else if (opcion == 3) {
 		cambiarDatosAlumnos(alumnos, tamanyoAlumnos);
 	} else if (opcion == 4) {
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else {
 		printf("\n");
-		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+	}
+}
+
+void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
+	int opcion = 0;
+	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
+	printf("1. Añadir nuevo material\n");
+	printf("2. Eliminar material\n");
+	printf("3. Alquilar\n");
+	printf("4. Volver\n");
+	scanf("%i", &opcion);
+
+	if (opcion == 1){
+		anyadirMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+	} else if (opcion == 2) {
+		eliminarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+	} else if (opcion == 3) {
+		alquilarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+	} else if (opcion == 4) {
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+	} else {
+		gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	}
 }
