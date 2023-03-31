@@ -14,6 +14,7 @@
 #include "../Forfait/Forfait.h"
 #include "../Material/Material.h"
 #include "../Remonte/Remonte.h"
+#include "../Alumno/Alumno.h"
 
 typedef struct{
 	int id;
@@ -27,5 +28,6 @@ typedef struct{
 	Forfait* forfaits;
 	Material* material;
 }Estacion;
+
 
 #endif /* ESTACION_ESTACION_H_ */

@@ -11,16 +11,13 @@
 #include "Material/Material.h"
 #include "Pista/Pista.h"
 #include "Remonte/Remonte.h"
+#include "Alumno/Alumno.h"
 
-void ventanaInicial(Empleado* empleados, int tamanyo);
+void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
 
-void menuPrincipal();
+void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
 
-void gestionarEstacion();
-
-void gestionarClases();
-
-void gestionarClases();
+void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
 
 int main(){
 
@@ -37,12 +34,19 @@ int main(){
 	empleados[7].id = 7;empleados[7].nombre = "Andrea";empleados[7].apellido = "Velarde";empleados[7].salario = 1789;empleados[7].direccion = "Granada";empleados[7].puesto = "Limpieza", empleados[7].telefono = 646638434;empleados[7].sexo = "F";empleados[7].idEstacion = 2;empleados[7].nivelPuesto = 1;empleados[7].nombreUsuario = "andrea";empleados[7].contrasenya = "3";
 	empleados[8].id = 8;empleados[8].nombre = "Beñat";empleados[8].apellido = "Fernandez";empleados[8].salario = 1750;empleados[8].direccion = "Salamanca";empleados[8].puesto = "Limpieza", empleados[8].telefono = 617583204;empleados[8].sexo = "M";empleados[8].idEstacion = 3;empleados[8].nivelPuesto = 1;empleados[8].nombreUsuario = "beñat";empleados[8].contrasenya = "2";
 
-	ventanaInicial(empleados, 9);
+	Cliente* clientes;
+	clientes = malloc(sizeof(Cliente) * 2);
+
+	clientes[0].id = 0;clientes[0].nombre = "ana";clientes[0].apellido = "fernandez";clientes[0].edad = 20;
+
+	Alumno* alumnos;
+
+	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0);
 
 	return 0;
 }
 
-void ventanaInicial(Empleado* empleados, int tamanyo){
+void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos){
 	int opcion = 0;
 	printf("GESTION DE ESTACIÓN DE SKI\n");
 	printf("1. Iniciar sesión\n");
@@ -52,9 +56,9 @@ void ventanaInicial(Empleado* empleados, int tamanyo){
 	scanf("%i", &opcion);
 
 	if(opcion == 1){
-		int resultado = loginEmpleado(empleados, tamanyo);
+		int resultado = loginEmpleado(empleados, tamanyoEmpleados);
 		if(resultado == 1){
-			gestionarEstacion();
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 		}
 	} else if (opcion == 2){
 		printf("\n");
@@ -65,12 +69,12 @@ void ventanaInicial(Empleado* empleados, int tamanyo){
 		exit(-1);
 	} else {
 		printf("\n");
-		ventanaInicial(empleados, tamanyo);
+		ventanaInicial(empleados, tamanyoEmpleados, clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	}
 
 }
 
-void gestionarEstacion(){
+void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR ESTACION\n");
 	printf("1. Mostrar estado de las pistas\n");
@@ -88,23 +92,24 @@ void gestionarEstacion(){
 	} else if (opcion == 2) {
 
 	} else if (opcion == 3) {
-
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else if (opcion == 4) {
-		gestionarClases();
+
 	} else if (opcion == 5) {
 
 	} else if (opcion == 6) {
 		leerDatosFichero("empleados.txt");
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else if (opcion == 7) {
 
 		exit(-1);
 	} else{
 		printf("\n");
-		gestionarEstacion();
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	}
 }
 
-void gestionarClases(){
+void gestionarClases(Cliente* clientes,int tamanyoClientes,  Alumno* alumnos, int tamanyoAlumnos){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
 	printf("1. Añadir alumno\n");
@@ -115,15 +120,15 @@ void gestionarClases(){
 	scanf("%i", &opcion);
 
 	if (opcion == 1) {
-
+		añadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else if (opcion == 2) {
 
 	} else if (opcion == 3) {
 
 	} else if (opcion == 4) {
-		gestionarEstacion();
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else {
 		printf("\n");
-		gestionarClases();
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	}
 }

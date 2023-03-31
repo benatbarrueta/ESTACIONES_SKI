@@ -1,6 +1,6 @@
-
 #ifndef CLIENTE_CLIENTE_H_
 #define CLIENTE_CLIENTE_H_
+
 #include <stdio.h>
 
 typedef struct{
@@ -9,7 +9,7 @@ typedef struct{
 	char* apellido;
 	char* correo;
 	int telefono;
-	char* fechaNcto;
+	char* edad;
 	char* sexo;
 	int idEstacion;
 }Cliente;
