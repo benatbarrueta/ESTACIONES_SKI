@@ -16,4 +16,6 @@ typedef struct{
 
 void imprimirClienteLargo(Cliente c);
 
+void leerDatosClientes(char* fichero);
+
 #endif /* CLIENTE_CLIENTE_H_ */

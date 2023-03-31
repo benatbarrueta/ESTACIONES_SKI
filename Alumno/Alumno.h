@@ -8,11 +8,13 @@ typedef struct {
 	int idCliente;
 	char* nombre;
 	char* apellido;
-	char* edad;
+	int edad;
 	int diasClase;
 	char* pagado;
 }Alumno;
 
 void añadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
+
+void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos);
 
 #endif /* ALUMNO_ALUMNO_H_ */
