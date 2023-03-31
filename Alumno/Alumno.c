@@ -56,7 +56,47 @@ void añadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int 
 
 	tamanyoAlumnos++;
 
+	escribirDatosAlumnos("alumnos.txt", alumnos, tamanyoAlumnos);
 
+}
+
+void eliminarAlumno(Alumno* alumnos, int tamanyoAlumnos){
+	leerDatosAlumnos("alumnos.txt");
+	int opcion = 0;
+	printf("Introduzca el ID del alumno a eliminar: ");
+	scanf("%i", &opcion);
+
+	for (int i = 0; i < tamanyoAlumnos; ++i) {
+		if (alumnos[i].id = opcion){
+			alumnos[i].nombre = NULL;
+			alumnos[i].apellido = NULL;
+			alumnos[i].diasClase = 0;
+			alumnos[i].edad = 0;
+			alumnos[i].idCliente = 0;
+			alumnos[i].pagado = NULL;
+		} else {
+			printf("El alumno seleccionado no existe");
+		}
+	}
+	escribirDatosAlumnos("alumnos.txt", alumnos, tamanyoAlumnos);
+}
+
+void cambiarDatosAlumnos(Alumno* alumnos, int tamanyoAlumnos){
+	leerDatosAlumnos("alumnos.txt");
+
+	int opcion = 0;
+	printf("Introduce el id del alumno que ha pagado: ");
+	scanf("%i", &opcion);
+
+	for (int i = 0; i < tamanyoAlumnos; ++i) {
+		if(alumnos[i].id == opcion){
+			alumnos[i].pagado = NULL;
+
+			strcpy(alumnos[i].pagado, "si");
+		}
+	}
+
+	escribirDatosAlumnos("alumnos.txt", alumnos, tamanyoAlumnos);
 }
 
 void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos){
@@ -66,13 +106,35 @@ void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos){
 	// Abrir fichero para escritura "w"
     f = fopen(fichero, "w");
 
-    // Escribir en fichero un string formateado
-    fprintf(f, "ID NOMBRE EDAD DURACION PAGADO\n");
-
     for (c = 0; c < numAlumnos; c++) {
-		fprintf(f, "%i %s %i %i dias %s \n", alumnos[c].id, alumnos[c].nombre, alumnos[c].edad, alumnos[c].diasClase, alumnos[c].pagado);
+		fprintf(f, "%i %s         %i  %i dias    %s \n", alumnos[c].id, alumnos[c].nombre, alumnos[c].edad, alumnos[c].diasClase, alumnos[c].pagado);
 	}
 
     // Cerrar fichero
     fclose(f);
+}
+
+void leerDatosAlumnos(char* fichero){
+	printf("------------------------------------------------------------------------------------\n");
+	printf("ID NOMBRE    EDAD DURACION PAGADO\n");
+	printf("------------------------------------------------------------------------------------\n");
+	FILE* f;
+	char c;
+
+	int num_lines = 0;
+	// Abrir fichero
+	f = fopen(fichero, "r");
+
+	while((c = fgetc(f)) != EOF){
+		if(c == '\n'){
+			num_lines++;
+
+		}
+		putchar(c);
+	}
+
+	fclose(f);
+
+	printf("El fichero tiene %i alumnos\n", num_lines);
+	printf("------------------------------------------------------------------------------------\n");
 }

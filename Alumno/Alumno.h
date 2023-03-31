@@ -15,6 +15,12 @@ typedef struct {
 
 void añadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos);
 
+void eliminarAlumno(Alumno* alumnos, int tamanyoAlumnos);
+
+void cambiarDatosAlumnos(Alumno* alumnos, int tamanyoAlumnos);
+
 void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos);
+
+void leerDatosAlumnos(char* fichero);
 
 #endif /* ALUMNO_ALUMNO_H_ */

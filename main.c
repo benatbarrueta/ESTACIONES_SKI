@@ -155,9 +155,9 @@ void gestionarClases(Cliente* clientes,int tamanyoClientes,  Alumno* alumnos, in
 	if (opcion == 1) {
 		añadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else if (opcion == 2) {
-
+		eliminarAlumno(alumnos, tamanyoAlumnos);
 	} else if (opcion == 3) {
-
+		cambiarDatosAlumnos(alumnos, tamanyoAlumnos);
 	} else if (opcion == 4) {
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else {
