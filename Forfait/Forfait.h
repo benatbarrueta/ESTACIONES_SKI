@@ -13,7 +13,7 @@
 typedef struct{
 	int id;
 	float precio;
-	char* duracion;
+	int duracion;
 	char* fecha;
 	int idEstacion;
 	int idCliente;

@@ -26,8 +26,9 @@ void leerDatosClientes(char* fichero){
 
 	fclose(f);
 
-	printf("\n\nEl fichero tiene %i clientes\n", num_lines);
-	printf("------------------------------------------------------------------------------------\n");
+	printf("\n------------------------------------------------------------------------------------\n");
+
+	printf("\nEl fichero tiene %i clientes\n", num_lines);
 }
 
 void escribirDatosClientes(char* fichero, Cliente* clientes, int tamanyoClientes){

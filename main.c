@@ -111,7 +111,7 @@ void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes
 
 void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
 	int opcion = 0;
-	printf("\n----------------------------\n\nGESTIONAR ESTACIONES\n");
+	printf("\n----------------------------\nGESTIONAR ESTACIONES\n");
 	printf("1. Sección de pistas\n");
 	printf("2. Sección de material\n");
 	printf("3. Sección de clases\n");
@@ -130,6 +130,26 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 	} else if (opcion == 3) {
 		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 4) {
+		sqlite3 *db;
+
+		int result = sqlite3_open("estaciones.sqlite", &db);
+		if (result != SQLITE_OK) {
+			printf("Error al abrir la base de datos\n");
+		}
+
+		result = leerDatosEstaciones(db);
+		if (result != SQLITE_OK) {
+			printf("Error obteniendo las estaciones\n");
+			printf("%s\n", sqlite3_errmsg(db));
+		}
+
+		int opcion2 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion2);
+		if (opcion2 == 1){
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		}
+
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 5) {
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
@@ -137,8 +157,13 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 7) {
 		leerDatosFichero("empleados.txt");
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
-	} else if (opcion == 7) {
+		int opcion3 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion3);
+		if (opcion3 == 1){
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		}
+	} else if (opcion == 8) {
 
 		exit(-1);
 	} else{

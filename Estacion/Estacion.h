@@ -1,10 +1,3 @@
-/*
- * Estación.h
- *
- *  Created on: 23 mar 2023
- *      Author: benatbarrueta
- */
-
 #ifndef ESTACION_ESTACION_H_
 #define ESTACION_ESTACION_H_
 
@@ -29,5 +22,6 @@ typedef struct{
 	Material* material;
 }Estacion;
 
+int leerDatosEstaciones(sqlite3 *db);
 
 #endif /* ESTACION_ESTACION_H_ */
