@@ -74,8 +74,6 @@ int main(){
 
 	Material* materiales = NULL;
 
-	escribirDatosAlumnos("clientes.txt", clientes, 29);
-
 	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0, materiales, 0);
 
 
@@ -117,7 +115,7 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 	printf("1. Sección de pistas\n");
 	printf("2. Sección de material\n");
 	printf("3. Sección de clases\n");
-	printf("4. Mostrar estaciones");
+	printf("4. Mostrar estaciones\n");
 	printf("5. Mostrar forfaits\n");
 	printf("6. Mostrar Remontes\n");
 	printf("7. Mostrar todos los empleados\n");
@@ -160,6 +158,7 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 	scanf("%i", &opcion);
 
 	if (opcion == 1) {
+		printf("\n");
 		anyadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 	} else if (opcion == 2) {
 		eliminarAlumno(alumnos, tamanyoAlumnos);

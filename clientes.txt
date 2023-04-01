@@ -1,0 +1,29 @@
+00 Ana       Fernandez    anaferandez@gmail.com        21        1        F  678937546
+01 Beñat     Barrutia     benatbarrutia@gmail.com      30        1        F  678535467
+02 Ane       Martinez     anemartinez@gmail.com        41        1        F  65797424
+03 Pablo     Capelastegui pablocapelastegui@gmail.com  61        1        F  673598345
+04 Patricia  Angulo       patriciaangulo@gmail.com     15        1        F  638564839
+05 Iker      Gonzalo      ikergonzalo@gmail.com        43        1        F  647382934
+06 Izaskun   Verdejeo     izaskunverdejo@gmail.com     25        1        F  637483948
+07 Jon Ander Oliver       jonanderoliver@gmail.com     46        1        F  628454427
+08 Itxaso    Bilbao       itxasobilbao@gmail.com       07        1        F  637483544
+09 Luis      Fernandez    luisferandez@gmail.com       21        1        F  678937546
+10 Ane       Martinez     anemartinez@gmail.com        30        2        F  678535467
+11 Beñat     Barrutia     benatbarrutia@gmail.com      41        2        F  65797424
+12 Izaskun   Verdejeo     izaskunverdejo@gmail.com     25        2        F  637483948
+13 Pablo     Capelastegui pablocapelastegui@gmail.com  61        2        F  673598345
+14 Patricia  Angulo       patriciaangulo@gmail.com     15        2        F  638564839
+15 Iker      Gonzalo      ikergonzalo@gmail.com        43        2        F  647382934
+16 Izaskun   Verdejeo     izaskunverdejo@gmail.com     25        2        F  637483948
+17 Jon Ander Oliver       jonanderoliver@gmail.com     46        2        F  628454427
+18 Itxaso    Bilbao       itxasobilbao@gmail.com       07        2        F  637483544
+19 Ana       Fernandez    anaferandez@gmail.com        21        3        F  678937546
+20 Beñat     Barrutia     benatbarrutia@gmail.com      41        3        F  65797424
+21 Ane       Martinez     anemartinez@gmail.com        30        3        F  678535467
+22 Beñat     Barrutia     benatbarrutia@gmail.com      41        3        F  65797424
+23 Pablo     Capelastegui pablocapelastegui@gmail.com  61        3        F  673598345
+24 Patricia  Angulo       patriciaangulo@gmail.com     15        3        F  638564839
+25 Iker      Gonzalo      ikergonzalo@gmail.com        43        3        F  647382934
+26 Izaskun   Verdejeo     izaskunverdejo@gmail.com     25        3        F  637483948
+27 Jon Ander Oliver       jonanderoliver@gmail.com     46        3        F  628454427
+28 Itxaso    Bilbao       itxasobilbao@gmail.com       07        3        F  637483544

@@ -18,4 +18,6 @@ void imprimirClienteLargo(Cliente c);
 
 void leerDatosClientes(char* fichero);
 
+void escribirDatosClientes(char* fichero, Cliente* clientes, int tamanyoCLientes);
+
 #endif /* CLIENTE_CLIENTE_H_ */

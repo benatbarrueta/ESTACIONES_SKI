@@ -26,6 +26,21 @@ void leerDatosClientes(char* fichero){
 
 	fclose(f);
 
-	printf("El fichero tiene %i clientes\n", num_lines);
+	printf("\n\nEl fichero tiene %i clientes\n", num_lines);
 	printf("------------------------------------------------------------------------------------\n");
+}
+
+void escribirDatosClientes(char* fichero, Cliente* clientes, int tamanyoClientes){
+	FILE* f;
+	int c;
+
+	// Abrir fichero para escritura "w"
+    f = fopen(fichero, "w");
+	fprintf(f, "ID NOMBRE    APELLIDO            CORREO              EDAD ID ESTACION  SEXO TELEFONO\n");
+    for (c = 0; c < tamanyoClientes; c++) {
+		fprintf(f, "%i %s   %s        %s                  %i      %i        %s   %i\n", clientes[c].id, clientes[c].nombre, clientes[c].apellido, clientes[c].correo, clientes[c].edad, clientes[c].idEstacion, clientes[c].sexo, clientes[c].telefono);
+	}
+
+    // Cerrar fichero
+    fclose(f);
 }
