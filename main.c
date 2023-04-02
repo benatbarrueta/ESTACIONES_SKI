@@ -156,23 +156,23 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 	} else if (opcion == 6) {
 		sqlite3 *db;
 
-				int result = sqlite3_open("estaciones.sqlite", &db);
-				if (result != SQLITE_OK) {
-					printf("Error al abrir la base de datos\n");
-				}
+		int result = sqlite3_open("estaciones.sqlite", &db);
+		if (result != SQLITE_OK) {
+			printf("Error al abrir la base de datos\n");
+		}
 
-				result = leerDatosRemontes(db);
-				if (result != SQLITE_OK) {
-					printf("Error obteniendo las remontes\n");
-					printf("%s\n", sqlite3_errmsg(db));
-				}
+		result = leerDatosRemontes(db);
+		if (result != SQLITE_OK) {
+			printf("Error obteniendo las remontes\n");
+			printf("%s\n", sqlite3_errmsg(db));
+		}
 
-				int opcion3 = 0;
-				printf("Pulse 1 y enter para volver al menú: ");
-				scanf("%i", &opcion3);
-				if (opcion3 == 1){
-					gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
-				}
+		int opcion3 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion3);
+		if (opcion3 == 1){
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		}
 
 
 	} else if (opcion == 7) {
@@ -227,6 +227,25 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 	scanf("%i", &opcion);
 
 	if (opcion == 1){
+		sqlite3 *db;
+
+		int result = sqlite3_open("estaciones.sqlite", &db);
+		if (result != SQLITE_OK) {
+			printf("Error al abrir la base de datos\n");
+		}
+
+		result = leerDatosMateriales(db);
+		if (result != SQLITE_OK) {
+			printf("Error obteniendo los materiales\n");
+			printf("%s\n", sqlite3_errmsg(db));
+		}
+
+		int opcion3 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion3);
+		if (opcion3 == 1){
+			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		}
 		anyadirMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 2) {
 		eliminarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
