@@ -154,7 +154,27 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 	} else if (opcion == 5) {
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 6) {
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		sqlite3 *db;
+
+				int result = sqlite3_open("estaciones.sqlite", &db);
+				if (result != SQLITE_OK) {
+					printf("Error al abrir la base de datos\n");
+				}
+
+				result = leerDatosRemontes(db);
+				if (result != SQLITE_OK) {
+					printf("Error obteniendo las remontes\n");
+					printf("%s\n", sqlite3_errmsg(db));
+				}
+
+				int opcion3 = 0;
+				printf("Pulse 1 y enter para volver al menú: ");
+				scanf("%i", &opcion3);
+				if (opcion3 == 1){
+					gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+				}
+
+
 	} else if (opcion == 7) {
 		leerDatosFichero("empleados.txt");
 		int opcion3 = 0;

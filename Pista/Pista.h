@@ -11,6 +11,9 @@ typedef struct{
 	int canyones;
 	int numRemontes;
 	int* idRemonte;
+	char* estado;
 }Pista;
+
+int leerDatosPista(sqlite3 *db);
 
 #endif /* PISTA_PISTA_H_ */

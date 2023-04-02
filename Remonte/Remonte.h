@@ -12,5 +12,5 @@ typedef struct{
 }Remonte;
 
 void imprimirRemonte(Remonte r);
-
+int leerDatosRemontes(sqlite3 *db);
 #endif
