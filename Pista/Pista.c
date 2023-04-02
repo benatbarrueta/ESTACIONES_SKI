@@ -15,6 +15,7 @@ void imprimirPista(Pista p){
 	}
 }
 
+
 int leerDatosPista(sqlite3 *db) {
 	sqlite3_stmt *stmt;
 

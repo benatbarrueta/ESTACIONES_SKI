@@ -1,13 +1,7 @@
-/*
- * Material.h
- *
- *  Created on: 23 mar 2023
- *      Author: benatbarrueta
- */
-
 #ifndef MATERIAL_MATERIAL_H_
 #define MATERIAL_MATERIAL_H_
 
+#include "../sqlite3.h"
 #include "../Cliente/Cliente.h"
 #include "../Alumno/Alumno.h"
 
@@ -28,6 +22,6 @@ void eliminarMaterial(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, i
 
 void alquilarMaterial(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
 
-void leerDatosMateriales(char* fichero);
+int leerDatosMateriales(sqlite3 *db);
 
 #endif /* MATERIAL_MATERIAL_H_ */

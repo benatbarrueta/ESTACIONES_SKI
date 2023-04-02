@@ -1,6 +1,6 @@
 #ifndef PISTA_PISTA_H_
 #define PISTA_PISTA_H_
-
+#include "../sqlite3.h"
 //#include "../Remonte/Remonte.h"
 
 typedef struct{
