@@ -10,10 +10,21 @@ typedef struct{
 	int idEstacion;
 	int canyones;
 	int numRemontes;
-	int* idRemonte;
 	char* estado;
 }Pista;
 
-int leerDatosPista(sqlite3 *db);
+void imprimirPista(Pista p);
+
+void anyadirPistas(Pista* pistas, int tamanyoPistas);
+
+void eliminarPistas(Pista* pistas, int tamanyoPistas);
+
+void cambiarEstadoPistas(Pista* pistas, int tamanyoPistas);
+
+int leerDatosPistas(sqlite3 *db);
+
+int borrarDatosPistas(sqlite3 *db, int id);
+
+int insertNewPista(sqlite3 *db, char nombre[], char dificultad[], int idEstacion, int num_canyones, int num_remontes, char estado[]);
 
 #endif /* PISTA_PISTA_H_ */

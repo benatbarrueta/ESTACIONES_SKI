@@ -11,9 +11,9 @@ void anyadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int 
 	int opcion = 0;
 	alumnos = malloc(sizeof(Alumno) * tamanyoAlumnos + 1);
 
-	alumnos->apellido = malloc(sizeof(char)*20);
-	alumnos->nombre = malloc(sizeof(char)*20);
-	alumnos->pagado = malloc(sizeof(char)*2);
+	alumnos[tamanyoAlumnos].apellido = malloc(sizeof(char)*20);
+	alumnos[tamanyoAlumnos].nombre = malloc(sizeof(char)*20);
+	alumnos[tamanyoAlumnos].pagado = malloc(sizeof(char)*2);
 
 	printf("\nSelecciona el id del cliente a añadir a las clases: ");
 	scanf("%i", &opcion);
@@ -43,16 +43,6 @@ void anyadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int 
 	scanf("%s", temp);
 	alumnos[tamanyoAlumnos].diasClase = dias;
 	strcpy(alumnos[tamanyoAlumnos].pagado, temp);
-
-	for (int i = 0; i < tamanyoClientes+1; ++i) {
-		for (int j = 0; j < tamanyoAlumnos + 1; ++j) {
-			if(clientes[i].id == alumnos[j].idCliente){
-				printf("Alumno %i, Nombre: %s, Edad: %i, %i dias, Pagado: %s\n", alumnos[j].id, clientes[i].nombre, clientes[i].edad, alumnos[j].diasClase, alumnos[j].pagado);
-			}
-			break;
-		}
-		break;
-	}
 
 	tamanyoAlumnos++;
 

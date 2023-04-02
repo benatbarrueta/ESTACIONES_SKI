@@ -13,13 +13,15 @@
 #include "Remonte/Remonte.h"
 #include "Alumno/Alumno.h"
 
-void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
+void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas);
 
-void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
+void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas);
 
-void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
+void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas);
 
-void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales);
+void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas);
+
+void gestionarPistas(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas);
 
 int main(){
 
@@ -74,14 +76,45 @@ int main(){
 
 	Material* materiales = NULL;
 
-	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0, materiales, 0);
+	Pista* pistas = malloc(sizeof(Pista)*27);
+
+	pistas[0].id = 1;pistas[0].nombre = "Pocahontas";pistas[0].dificultad = "Roja";pistas[0].idEstacion = 1;pistas[0].canyones = 5;pistas[0].numRemontes = 3;pistas[0].estado = "Activado";
+	pistas[1].id = 2;pistas[1].nombre = "Maxxis";pistas[1].dificultad = "Azul";pistas[1].idEstacion = 1;pistas[1].canyones = 3;pistas[1].numRemontes = 6;pistas[1].estado = "Desactivado";
+	pistas[2].id = 3;pistas[2].nombre = "Reineta";pistas[2].dificultad = "Negra";pistas[2].idEstacion = 1;pistas[2].canyones = 5;pistas[2].numRemontes = 2;pistas[2].estado = "Activado";
+	pistas[3].id = 4;pistas[3].nombre = "Artxanda";pistas[3].dificultad = "Roja";pistas[3].idEstacion = 1;pistas[3].canyones = 9;pistas[3].numRemontes = 1;pistas[3].estado = "Desactivado";
+	pistas[4].id = 5;pistas[4].nombre = "Potongo";pistas[4].dificultad = "Azul";pistas[4].idEstacion = 1;pistas[4].canyones = 2;pistas[4].numRemontes = 6;pistas[4].estado = "Desactivado";
+	pistas[5].id = 6;pistas[5].nombre = "Sant Andreu";pistas[5].dificultad = "Negra";pistas[5].idEstacion = 1;pistas[5].canyones = 8;pistas[5].numRemontes = 5;pistas[5].estado = "Activado";
+	pistas[6].id = 7;pistas[6].nombre = "Masella";pistas[6].dificultad = "Roja";pistas[6].idEstacion = 1;pistas[6].canyones = 3;pistas[6].numRemontes = 4;pistas[6].estado = "Desactivado";
+	pistas[7].id = 8;pistas[7].nombre = "Molina";pistas[7].dificultad = "Azul";pistas[7].idEstacion = 1;pistas[7].canyones = 1;pistas[7].numRemontes = 8;pistas[7].estado = "Activado";
+	pistas[8].id = 9;pistas[8].nombre = "Despeña";pistas[8].dificultad = "Negra";pistas[8].idEstacion = 1;pistas[8].canyones = 4;pistas[8].numRemontes = 2;pistas[8].estado = "Desactivado";
+	pistas[9].id = 1;pistas[9].nombre = "Pocahontas";pistas[9].dificultad = "Roja";pistas[9].idEstacion = 2;pistas[9].canyones = 5;pistas[9].numRemontes = 3;pistas[9].estado = "Activado";
+	pistas[10].id = 2;pistas[10].nombre = "Maxxis";pistas[10].dificultad = "Azul";pistas[10].idEstacion = 2;pistas[10].canyones = 3;pistas[10].numRemontes = 6;pistas[10].estado = "Desactivado";
+	pistas[11].id = 3;pistas[11].nombre = "Reineta";pistas[11].dificultad = "Negra";pistas[11].idEstacion = 2;pistas[11].canyones = 5;pistas[11].numRemontes = 2;pistas[11].estado = "Activado";
+	pistas[12].id = 4;pistas[12].nombre = "Artxanda";pistas[12].dificultad = "Roja";pistas[12].idEstacion = 2;pistas[12].canyones = 9;pistas[12].numRemontes = 1;pistas[12].estado = "Desactivado";
+	pistas[13].id = 5;pistas[13].nombre = "Potongo";pistas[13].dificultad = "Azul";pistas[13].idEstacion = 2;pistas[13].canyones = 2;pistas[13].numRemontes = 6;pistas[14].estado = "Activado";
+	pistas[14].id = 6;pistas[14].nombre = "Sant Andreu";pistas[14].dificultad = "Negra";pistas[14].idEstacion = 2;pistas[14].canyones = 8;pistas[14].numRemontes = 5;pistas[14].estado = "Desactivado";
+	pistas[15].id = 7;pistas[15].nombre = "Masella";pistas[15].dificultad = "Roja";pistas[15].idEstacion = 2;pistas[15].canyones = 3;pistas[15].numRemontes = 4;pistas[15].estado = "Activado";
+	pistas[16].id = 8;pistas[16].nombre = "Molina";pistas[16].dificultad = "Azul";pistas[16].idEstacion = 2;pistas[16].canyones = 1;pistas[16].numRemontes = 8;pistas[16].estado = "Desactivado";
+	pistas[17].id = 9;pistas[17].nombre = "Despeña";pistas[17].dificultad = "Negra";pistas[17].idEstacion = 2;pistas[17].canyones = 4;pistas[17].numRemontes = 2;pistas[17].estado = "Activado";
+	pistas[18].id = 1;pistas[18].nombre = "Pocahontas";pistas[18].dificultad = "Roja";pistas[18].idEstacion = 1;pistas[18].canyones = 5;pistas[18].numRemontes = 3;pistas[18].estado = "Desactivado";
+	pistas[19].id = 2;pistas[19].nombre = "Maxxis";pistas[19].dificultad = "Azul";pistas[19].idEstacion = 1;pistas[19].canyones = 3;pistas[19].numRemontes = 6;pistas[19].estado = "Activado";
+	pistas[20].id = 3;pistas[20].nombre = "Reineta";pistas[20].dificultad = "Negra";pistas[20].idEstacion = 1;pistas[20].canyones = 5;pistas[20].numRemontes = 2;pistas[20].estado = "Desactivado";
+	pistas[21].id = 4;pistas[21].nombre = "Artxanda";pistas[21].dificultad = "Roja";pistas[21].idEstacion = 1;pistas[21].canyones = 9;pistas[21].numRemontes = 1;pistas[21].estado = "Activado";
+	pistas[22].id = 5;pistas[22].nombre = "Potongo";pistas[22].dificultad = "Azul";pistas[22].idEstacion = 1;pistas[22].canyones = 2;pistas[22].numRemontes = 6;pistas[22].estado = "Desactivado";
+	pistas[23].id = 6;pistas[23].nombre = "Sant Andreu";pistas[23].dificultad = "Negra";pistas[23].idEstacion = 1;pistas[23].canyones = 8;pistas[23].numRemontes = 5;pistas[23].estado = "Activado";
+	pistas[24].id = 7;pistas[24].nombre = "Masella";pistas[24].dificultad = "Roja";pistas[24].idEstacion = 1;pistas[24].canyones = 3;pistas[24].numRemontes = 4;pistas[24].estado = "Desactivado";
+	pistas[25].id = 8;pistas[25].nombre = "Molina";pistas[25].dificultad = "Azul";pistas[25].idEstacion = 1;pistas[25].canyones = 1;pistas[25].numRemontes = 8;pistas[25].estado = "Activado";
+	pistas[26].id = 9;pistas[26].nombre = "Despeña";pistas[26].dificultad = "Negra";pistas[26].idEstacion = 1;pistas[26].canyones = 4;pistas[26].numRemontes = 2;pistas[26].estado = "Desactivado";
+
+
+	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0, materiales, 0, pistas, 27);
 
 
 
 	return 0;
 }
 
-void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
+void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
 	int opcion = 0;
 	printf("GESTION DE ESTACIÓN DE SKI\n");
 	printf("1. Iniciar sesión\n");
@@ -93,7 +126,7 @@ void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes
 	if(opcion == 1){
 		int resultado = loginEmpleado(empleados, tamanyoEmpleados);
 		if(resultado == 1){
-			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 	} else if (opcion == 2){
 		printf("\n");
@@ -104,12 +137,12 @@ void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes
 		exit(-1);
 	} else {
 		printf("\n");
-		ventanaInicial(empleados, tamanyoEmpleados, clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		ventanaInicial(empleados, tamanyoEmpleados, clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	}
 
 }
 
-void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
+void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
 	int opcion = 0;
 	printf("\n----------------------------\nGESTIONAR ESTACIONES\n");
 	printf("1. Sección de pistas\n");
@@ -124,11 +157,11 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 	scanf("%i", &opcion);
 
 	if (opcion == 1) {
-
+		gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 2) {
-		gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 3) {
-		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 4) {
 		sqlite3 *db;
 
@@ -147,7 +180,7 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 		printf("Pulse 1 y enter para volver al menú: ");
 		scanf("%i", &opcion2);
 		if (opcion2 == 1){
-			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 
 	} else if (opcion == 5) {
@@ -168,7 +201,7 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 		printf("Pulse 1 y enter para volver al menú: ");
 		scanf("%i", &opcion2);
 		if (opcion2 == 1){
-			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 	} else if (opcion == 6) {
 		sqlite3 *db;
@@ -188,7 +221,7 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 		printf("Pulse 1 y enter para volver al menú: ");
 		scanf("%i", &opcion3);
 		if (opcion3 == 1){
-			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 
 
@@ -198,18 +231,18 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 		printf("Pulse 1 y enter para volver al menú: ");
 		scanf("%i", &opcion3);
 		if (opcion3 == 1){
-			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 	} else if (opcion == 8) {
 
 		exit(-1);
 	} else{
 		printf("\n");
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	}
 }
 
-void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
+void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
 	printf("1. Añadir alumno\n");
@@ -222,19 +255,20 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 	if (opcion == 1) {
 		printf("\n");
 		anyadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 2) {
 		eliminarAlumno(alumnos, tamanyoAlumnos);
 	} else if (opcion == 3) {
 		cambiarDatosAlumnos(alumnos, tamanyoAlumnos);
 	} else if (opcion == 4) {
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else {
 		printf("\n");
-		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	}
 }
 
-void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales){
+void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
 	int opcion = 0;
 	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
 	printf("1. Añadir nuevo material\n");
@@ -261,7 +295,7 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 		printf("Pulse 1 y enter para volver al menú: ");
 		scanf("%i", &opcion3);
 		if (opcion3 == 1){
-			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 		anyadirMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 2) {
@@ -269,8 +303,41 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 	} else if (opcion == 3) {
 		alquilarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 4) {
-		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else {
-		gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	}
+}
+
+void gestionarPistas(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
+	int opcion = 0;
+		printf("\n----------------------------\n\nGESTIONAR PISTAS\n");
+		printf("1. Añadir nueva pista\n");
+		printf("2. Eliminar pista\n");
+		printf("3. Mostrar pistas activadas\n");
+		printf("4. Cambiar estado pistas\n");
+		printf("5. Volver\n");
+		scanf("%i", &opcion);
+
+		if(opcion == 1){
+			anyadirPistas(pistas, 27);
+			gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		} else if (opcion == 2){
+			eliminarPistas(pistas, 27);
+
+			int opcion3 = 0;
+			printf("Pulse 1 y enter para volver al menú: ");
+			scanf("%i", &opcion3);
+			if (opcion3 == 1){
+				gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+			}
+		} else if (opcion == 3){
+
+		} else if (opcion == 4){
+			cambiarEstadoPistas(pistas, 27);
+		} else if (opcion == 5){
+			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		} else {
+			gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		}
 }
