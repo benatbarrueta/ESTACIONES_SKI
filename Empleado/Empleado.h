@@ -27,10 +27,10 @@ typedef struct{
 
 void imprimirEmpleadoLargo(Empleado e);
 
-int loginEmpleado(Empleado* empleados, int tamanyo);
+int loginEmpleado(Empleado* empleados, int tamanyoEmpleados);
 
-Empleado* registrarEmpleado(Empleado* empleados);
+void registrarEmpleado(Empleado* empleados, int tamanyoEmpleados);
 
-void leerDatosFichero(char* fichero);
+void leerDatosEmpleado(char* fichero);
 
 #endif /* EMPLEADO_EMPLEADO_H_ */

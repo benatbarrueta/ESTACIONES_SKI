@@ -127,11 +127,13 @@ void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes
 		int resultado = loginEmpleado(empleados, tamanyoEmpleados);
 		if(resultado == 1){
 			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		} else {
+			printf("Vuelva a ejecutar el programa");
 		}
 	} else if (opcion == 2){
 		printf("\n");
 		printf("EMPLEADOS\n-------------------------------------------------------------------------\n");
-		registrarEmpleado(empleados);
+		registrarEmpleado(empleados, tamanyoEmpleados);
 		printf("\n");
 	} else if (opcion == 3){
 		exit(-1);
@@ -226,7 +228,7 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 
 
 	} else if (opcion == 7) {
-		leerDatosFichero("empleados.txt");
+		leerDatosEmpleado("empleados.txt");
 		int opcion3 = 0;
 		printf("Pulse 1 y enter para volver al menú: ");
 		scanf("%i", &opcion3);
@@ -244,10 +246,10 @@ void gestionarEstacion(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, 
 
 void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
 	int opcion = 0;
-	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
+	printf("\n-------------------------\n\nGESTIONAR CLASES\n");
 	printf("1. Añadir alumno\n");
 	printf("2. Eliminar alumno\n");
-	printf("3. Cambiar estado\n");
+	printf("3. Cambiar estado del pago\n");
 	printf("4. Volver\n");
 	printf("Introduzca la opción: ");
 	scanf("%i", &opcion);
@@ -257,7 +259,20 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 		anyadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 2) {
-		eliminarAlumno(alumnos, tamanyoAlumnos);
+		if(tamanyoAlumnos > 0) {
+			eliminarAlumno(alumnos, tamanyoAlumnos);
+			printf("Pulse 1 y enter para volver al menú: ");
+
+			int opcion3 = 0;
+
+			scanf("%i", &opcion3);
+			if (opcion3 == 1){
+				gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+			}
+		} else {
+			printf("No hay alumnos en la lista, por tanto, no hay que eliminar");
+			gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		}
 	} else if (opcion == 3) {
 		cambiarDatosAlumnos(alumnos, tamanyoAlumnos);
 	} else if (opcion == 4) {
@@ -270,26 +285,16 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 
 void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
 	int opcion = 0;
-	printf("\n----------------------------\n\nGESTIONAR CLASES\n");
+	printf("\n----------------------------\n\nGESTIONAR MATERIALES\n");
 	printf("1. Añadir nuevo material\n");
 	printf("2. Eliminar material\n");
 	printf("3. Alquilar\n");
 	printf("4. Volver\n");
+	printf("Introduzca la opción: ");
 	scanf("%i", &opcion);
 
 	if (opcion == 1){
-		sqlite3 *db;
-
-		int result = sqlite3_open("estaciones.sqlite", &db);
-		if (result != SQLITE_OK) {
-			printf("Error al abrir la base de datos\n");
-		}
-
-		result = leerDatosMateriales(db);
-		if (result != SQLITE_OK) {
-			printf("Error obteniendo los materiales\n");
-			printf("%s\n", sqlite3_errmsg(db));
-		}
+		anyadirMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 
 		int opcion3 = 0;
 		printf("Pulse 1 y enter para volver al menú: ");
@@ -297,9 +302,16 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 		if (opcion3 == 1){
 			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
-		anyadirMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 2) {
 		eliminarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+
+		int opcion3 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion3);
+		if (opcion3 == 1){
+			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		}
+
 	} else if (opcion == 3) {
 		alquilarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 	} else if (opcion == 4) {
@@ -317,6 +329,7 @@ void gestionarPistas(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 		printf("3. Mostrar pistas activadas\n");
 		printf("4. Cambiar estado pistas\n");
 		printf("5. Volver\n");
+		printf("Introduzca la opción: ");
 		scanf("%i", &opcion);
 
 		if(opcion == 1){

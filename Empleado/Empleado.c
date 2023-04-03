@@ -9,7 +9,7 @@ void imprimirEmpleadoLargo(Empleado e){
 	printf("Empleado número %i:\n- Nombre: %s\n- Apellido: %s\n- Salario: %.2f\n- Direccion: %s\n- Puesto: %s\n- Telefono: %i\n- Sexo: %s\n- Nivel de puesto: %i\n- Nombre de usuario: %s\n- contrasenya: %s\n", e.id, e.nombre, e.apellido, e.salario, e.direccion, e.puesto, e.telefono, e.sexo, e.nivelPuesto, e.nombreUsuario, e.contrasenya);
 }
 
-int loginEmpleado(Empleado* empleados, int tamanyo){
+int loginEmpleado(Empleado* empleados, int tamanyoEmpleados){
 	int resultado = 0;
 	char nombreUsuario[10];
 	char contrasenya[10];
@@ -20,7 +20,7 @@ int loginEmpleado(Empleado* empleados, int tamanyo){
 	printf("Contraseña: ");
 	scanf("%s", contrasenya);
 
-	for (int i = 0; i < tamanyo; ++i) {
+	for (int i = 0; i < tamanyoEmpleados; ++i) {
 		if(strcmp(empleados[i].nombreUsuario, nombreUsuario) == 0 && strcmp(empleados[i].contrasenya, contrasenya) == 0){
 			printf("\nLogin correcto!\n");
 			resultado = 1;
@@ -38,7 +38,7 @@ int loginEmpleado(Empleado* empleados, int tamanyo){
 	return resultado;
 }
 
-Empleado* registrarEmpleado(Empleado* empleados){
+void registrarEmpleado(Empleado* empleados, int tamanyoEmpleados){
 	char nombre[10];
 	char apellido[10];
 	float salario;
@@ -72,14 +72,20 @@ Empleado* registrarEmpleado(Empleado* empleados){
 	printf("contrasenya: ");
 	scanf("%s", contrasenya);
 
-	Empleado p = {0, nombre, apellido, salario, direccion, puesto, telefono, sexo, nivelPuesto, nombreUsuario, contrasenya};
-	empleados[p.id-1] = p;
-	printf("\n\nEl empleado a añadir es: \n");
-	imprimirEmpleadoLargo(p);
-	return empleados;
+	empleados = malloc(sizeof(Empleado) * (tamanyoEmpleados + 1));
+	empleados[tamanyoEmpleados].id = empleados[tamanyoEmpleados - 1].id++;
+	strcpy(empleados[tamanyoEmpleados].nombre, nombre);
+	strcpy(empleados[tamanyoEmpleados].apellido, apellido);
+	empleados[tamanyoEmpleados].salario = salario;
+	strcpy(empleados[tamanyoEmpleados].direccion, direccion);
+	strcpy(empleados[tamanyoEmpleados].puesto, puesto);
+	empleados[tamanyoEmpleados].telefono = telefono;
+	strcpy(empleados[tamanyoEmpleados].sexo, sexo);
+	strcpy(empleados[tamanyoEmpleados].nombreUsuario, nombreUsuario);
+	strcpy(empleados[tamanyoEmpleados].contrasenya, contrasenya);
 }
 
-void leerDatosFichero(char* fichero){
+void leerDatosEmpleado(char* fichero){
 	printf("\n-----------------------------------------------------------------------------------------------------------------------------------\n");
 	printf("ID    NOMBRE    APELLIDO    SALARIO  CIUDAD    PUESTO \t      TELEFONO  SEXO  ESTACION  NIVEL PUESTO  NOMBRE DE USUARIO  CONTRASEÑA\n");
 	printf("-----------------------------------------------------------------------------------------------------------------------------------\n");

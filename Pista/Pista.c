@@ -16,16 +16,18 @@ void anyadirPistas(Pista* pistas, int tamanyoPistas){
 	int numRemontes = 0;
 	int numCanyones = 0;
 	char estado[100];
+
 	printf("Indique todos los datos en mayusculas, por favor\n");
-	printf("Indique el nombre: ");
+
+	printf("- Indique el nombre: \n");
 	scanf("%s", nombre);
-	printf("indique el grado de dificultad: \n");
+	printf("- Indique el grado de dificultad: \n");
 	scanf("%s", dificultad);
-	printf("Indique cual es el id de la estación(1. Valdezcaray, 2. Formigal, 3. Baqueira Beret): \n");
+	printf("- Indique cual es el id de la estación(1. Valdezcaray, 2. Formigal, 3. Baqueira Beret): \n");
 	scanf("%i", &idEstacion);
-	printf("Indique el numero de remontes que tiene la pista: \n");
+	printf("- Indique el numero de remontes que tiene la pista: \n");
 	scanf("%i", &numRemontes);
-	printf("Indique el número de cañones que tiene la pista: \n");
+	printf("- Indique el número de cañones que tiene la pista: \n");
 	scanf("%i", &numCanyones);
 
 	pistas = malloc(sizeof(Pista) * tamanyoPistas + 1);
@@ -51,8 +53,6 @@ void anyadirPistas(Pista* pistas, int tamanyoPistas){
 		printf("Error opening database\n");
 	}
 
-	printf("Database opened\n") ;
-
 	result = insertNewPista(db, nombre, dificultad, idEstacion, numRemontes, numCanyones, estado2);
 	if (result != SQLITE_OK) {
 		printf("Error inserting new data\n");
@@ -71,7 +71,7 @@ void eliminarPistas(Pista* pistas, int tamanyoPistas){
 
 	result = leerDatosPistas(db);
 	if (result != SQLITE_OK) {
-		printf("Error obteniendo los materiales\n");
+		printf("Error obteniendo las pistas\n");
 		printf("%s\n", sqlite3_errmsg(db));
 	}
 
@@ -111,11 +111,11 @@ void cambiarEstadoPistas(Pista* pistas, int tamanyoPistas){
 	for (int i = 0; i < tamanyoPistas; ++i) {
 		if(pistas[i].id == opcion){
 			if(strcmp(pistas[i].estado, "ACTIVADO")){
-//				strcpy(pistas[i].estado, "DESACTIVADO");
+				strcpy(pistas[i].estado, "DESACTIVADO");
 				modificarPistas(db, opcion, activado);
 			} else if(strcmp(pistas[i].estado, "ACTIVADO")){
 				strcpy(pistas[i].estado, "DESACTIVADO");
-//				modificarPistas(db, opcion, desactivado);
+				modificarPistas(db, opcion, desactivado);
 			}
 		}
 	}
@@ -233,7 +233,7 @@ int leerDatosPistas(sqlite3 *db) {
 int borrarDatosPistas(sqlite3 *db, int id) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "DELETE from PISTA WHERE ID = ?";
+	char sql[] = "DELETE from PISTA WHERE id = ?";
 
 	int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	if (result != SQLITE_OK) {
