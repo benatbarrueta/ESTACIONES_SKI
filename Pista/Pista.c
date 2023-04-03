@@ -87,13 +87,44 @@ void eliminarPistas(Pista* pistas, int tamanyoPistas){
 }
 
 void cambiarEstadoPistas(Pista* pistas, int tamanyoPistas){
+	sqlite3 *db;
 
+	int result = sqlite3_open("estaciones.sqlite", &db);
+	if (result != SQLITE_OK) {
+		printf("Error al abrir la base de datos\n");
+	}
+
+	result = leerDatosPistas(db);
+	if (result != SQLITE_OK) {
+		printf("Error obteniendo los materiales\n");
+		printf("%s\n", sqlite3_errmsg(db));
+	}
+
+	int opcion = 0;
+	printf("\nSeleccione el id de la pista que quieras que cambie de estado: ");
+	scanf("%i", &opcion);
+
+	char activado[100];
+	strcpy(activado, "ACTIVADO");
+	char desactivado[100];
+	strcpy(desactivado, "DESACTIVADO");
+	for (int i = 0; i < tamanyoPistas; ++i) {
+		if(pistas[i].id == opcion){
+			if(strcmp(pistas[i].estado, "ACTIVADO")){
+//				strcpy(pistas[i].estado, "DESACTIVADO");
+				modificarPistas(db, opcion, activado);
+			} else if(strcmp(pistas[i].estado, "ACTIVADO")){
+				strcpy(pistas[i].estado, "DESACTIVADO");
+//				modificarPistas(db, opcion, desactivado);
+			}
+		}
+	}
 }
 
-int leerDatosPistas(sqlite3 *db) {
+int leerDatosPistasActivdas(sqlite3 *db) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "select id, nombre, dificultad, id_estacion, num_canyones, num_remontes from PISTA";
+	char sql[] = "select id, nombre, dificultad, id_estacion, num_canyones, num_remontes from PISTA where estado = 'ACTIVADO'";
 
 	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
 	if (result != SQLITE_OK) {
@@ -103,7 +134,6 @@ int leerDatosPistas(sqlite3 *db) {
 	}
 
 	int num_lines = 0;
-
 	int id;
 	char nombre[100];
 	char dificultad[100];
@@ -144,10 +174,66 @@ int leerDatosPistas(sqlite3 *db) {
 	return SQLITE_OK;
 }
 
+int leerDatosPistas(sqlite3 *db) {
+	sqlite3_stmt *stmt;
+
+	char sql[] = "select id, nombre, dificultad, id_estacion, num_canyones, num_remontes, estado from PISTA";
+
+	int result = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
+	if (result != SQLITE_OK) {
+		printf("Error obteniendo datos de la tabla pista");
+		printf("%s\n", sqlite3_errmsg(db));
+		return result;
+	}
+
+	int num_lines = 0;
+
+	int id;
+	char nombre[100];
+	char dificultad[100];
+	int idEstacion;
+	int numCanyones;
+	int numRemontes;
+	char estado[100];
+
+
+	printf("\n----------------------------------------------------------------------------------------------------------------------------------------\n");
+
+	do {
+		result = sqlite3_step(stmt) ;
+		if (result == SQLITE_ROW) {
+			id = sqlite3_column_int(stmt, 0);
+			strcpy(nombre, (char *) sqlite3_column_text(stmt, 1));
+			strcpy(dificultad, (char *) sqlite3_column_text(stmt, 2));
+			idEstacion = sqlite3_column_int(stmt, 3);
+			numCanyones = sqlite3_column_int(stmt, 4);
+			numRemontes = sqlite3_column_int(stmt, 5);
+			strcpy(estado, (char *) sqlite3_column_text(stmt, 6));
+			printf("ID: %d\tNombre: %s   Dificultad: %s   Id de estación: %i   Número de cañones: %i   Número de remontes: %i   Estado: %s\n", id, nombre, dificultad, idEstacion, numCanyones, numRemontes, estado);
+			num_lines++;
+		}
+	} while (result == SQLITE_ROW);
+	printf("\n----------------------------------------------------------------------------------------------------------------------------------------\n");
+	printf("\nEl fichero tiene %i pistas\n", num_lines);
+
+
+
+	result = sqlite3_finalize(stmt);
+	if (result != SQLITE_OK) {
+		printf("Error finalizing statement (SELECT)\n");
+		printf("%s\n", sqlite3_errmsg(db));
+		return result;
+	}
+
+
+
+	return SQLITE_OK;
+}
+
 int borrarDatosPistas(sqlite3 *db, int id) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "DELETE * from PISTA WHERE ID = ?";
+	char sql[] = "DELETE from PISTA WHERE ID = ?";
 
 	int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	if (result != SQLITE_OK) {
@@ -156,12 +242,12 @@ int borrarDatosPistas(sqlite3 *db, int id) {
 		return result;
 	}
 
-	result = sqlite3_bind_int(stmt, 2, id);
-		if (result != SQLITE_OK) {
-			printf("Error pasando los parametros\n");
-			printf("%s\n", sqlite3_errmsg(db));
-			return result;
-		}
+	result = sqlite3_bind_int(stmt, 1, id);
+	if (result != SQLITE_OK) {
+		printf("Error pasando los parametros\n");
+		printf("%s\n", sqlite3_errmsg(db));
+		return result;
+	}
 
 	result = sqlite3_step(stmt);
 	if (result != SQLITE_DONE) {
@@ -250,6 +336,63 @@ int insertNewPista(sqlite3 *db, char nombre[], char dificultad[], int idEstacion
 	}
 
 	printf("Prepared statement finalized (INSERT)\n");
+
+	return SQLITE_OK;
+}
+
+int modificarPistas(sqlite3 *db, int id, char estado[]){
+	sqlite3_stmt *stmt;
+
+	char sql[] = "UPDATE PISTA SET estado = 'ACTIVADO' WHERE id = ?";
+
+	char sql1[] = "UPDATE PISTA SET estado = 'DESACTIVADO' WHERE id = ?";
+
+	int result;
+
+	if(strcmp(estado, "ACTIVADO")){
+		result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
+		if (result != SQLITE_OK) {
+			printf("Error actualizando datos de la tabla pista");
+			printf("%s\n", sqlite3_errmsg(db));
+			return result;
+		}
+	} else if(strcmp(estado, "DESACTIVADO")){
+		result = sqlite3_prepare_v2(db, sql1, strlen(sql1) + 1, &stmt, NULL) ;
+		if (result != SQLITE_OK) {
+			printf("Error actualizando datos de la tabla pista");
+			printf("%s\n", sqlite3_errmsg(db));
+			return result;
+		}
+	}
+
+//	result = sqlite3_bind_text(stmt, 2, estado, strlen(estado) + 1, SQLITE_STATIC);
+//	if (result != SQLITE_OK) {
+//		printf("Error binding parameters\n");
+//		printf("%s\n", sqlite3_errmsg(db));
+//		return result;
+//	}
+
+	result = sqlite3_bind_int(stmt, 1, id);
+		if (result != SQLITE_OK) {
+			printf("Error pasando los parametros\n");
+			printf("%s\n", sqlite3_errmsg(db));
+			return result;
+		}
+
+	result = sqlite3_step(stmt);
+	if (result != SQLITE_DONE) {
+		printf("Error actualizando datos de la tabla pista\n");
+		return result;
+	}
+
+	result = sqlite3_finalize(stmt);
+	if (result != SQLITE_OK) {
+		printf("Error terminando de completar la actualización\n");
+		printf("%s\n", sqlite3_errmsg(db));
+		return result;
+	}
+
+
 
 	return SQLITE_OK;
 }

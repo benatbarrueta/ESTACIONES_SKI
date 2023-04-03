@@ -21,10 +21,14 @@ void eliminarPistas(Pista* pistas, int tamanyoPistas);
 
 void cambiarEstadoPistas(Pista* pistas, int tamanyoPistas);
 
+int leerDatosPistasActivdas(sqlite3 *db);
+
 int leerDatosPistas(sqlite3 *db);
 
 int borrarDatosPistas(sqlite3 *db, int id);
 
 int insertNewPista(sqlite3 *db, char nombre[], char dificultad[], int idEstacion, int num_canyones, int num_remontes, char estado[]);
+
+int modificarPistas(sqlite3 *db, int id, char estado[]);
 
 #endif /* PISTA_PISTA_H_ */

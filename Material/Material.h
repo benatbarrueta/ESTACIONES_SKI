@@ -10,7 +10,6 @@ typedef struct{
 	char* talla;
 	float precio;
 	char* tipo;
-	char* fecha;
 	char* estado;
 	int idEstacion;
 	int idCliente;

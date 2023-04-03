@@ -325,16 +325,41 @@ void gestionarPistas(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 		} else if (opcion == 2){
 			eliminarPistas(pistas, 27);
 
+			int opcion1 = 0;
+			printf("Pulse 1 y enter para volver al menú: ");
+			scanf("%i", &opcion1);
+			if (opcion1 == 1){
+				gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+			}
+		} else if (opcion == 3){
+			sqlite3 *db;
+
+			int result = sqlite3_open("estaciones.sqlite", &db);
+			if (result != SQLITE_OK) {
+				printf("Error al abrir la base de datos\n");
+			}
+
+			result = leerDatosPistasActivdas(db);
+			if (result != SQLITE_OK) {
+				printf("Error obteniendo los materiales\n");
+				printf("%s\n", sqlite3_errmsg(db));
+			}
+
 			int opcion3 = 0;
 			printf("Pulse 1 y enter para volver al menú: ");
 			scanf("%i", &opcion3);
 			if (opcion3 == 1){
 				gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 			}
-		} else if (opcion == 3){
-
 		} else if (opcion == 4){
 			cambiarEstadoPistas(pistas, 27);
+
+			int opcion3 = 0;
+			printf("Pulse 1 y enter para volver al menú: ");
+			scanf("%i", &opcion3);
+			if (opcion3 == 1){
+				gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+			}
 		} else if (opcion == 5){
 			gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		} else {
