@@ -19,15 +19,15 @@ void anyadirPistas(Pista* pistas, int tamanyoPistas){
 
 	printf("Indique todos los datos en mayusculas, por favor\n");
 
-	printf("- Indique el nombre: \n");
+	printf("- Indique el nombre: ");
 	scanf("%s", nombre);
-	printf("- Indique el grado de dificultad: \n");
+	printf("- Indique el grado de dificultad: ");
 	scanf("%s", dificultad);
-	printf("- Indique cual es el id de la estación(1. Valdezcaray, 2. Formigal, 3. Baqueira Beret): \n");
+	printf("- Indique cual es el id de la estación(1. Valdezcaray, 2. Formigal, 3. Baqueira Beret): ");
 	scanf("%i", &idEstacion);
-	printf("- Indique el numero de remontes que tiene la pista: \n");
+	printf("- Indique el numero de remontes que tiene la pista: ");
 	scanf("%i", &numRemontes);
-	printf("- Indique el número de cañones que tiene la pista: \n");
+	printf("- Indique el número de cañones que tiene la pista: ");
 	scanf("%i", &numCanyones);
 
 	pistas = malloc(sizeof(Pista) * tamanyoPistas + 1);
