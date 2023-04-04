@@ -32,7 +32,7 @@ void anyadirMaterial(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 	materiales[tamanyoMateriales].tipo = malloc(sizeof(char)*100);
 	materiales[tamanyoMateriales].estado = malloc(sizeof(char)*100);
 
-	materiales[tamanyoMateriales].id = materiales[tamanyoMateriales].id++;
+	materiales[tamanyoMateriales].id = materiales[tamanyoMateriales - 1].id++;
 	strcpy(materiales[tamanyoMateriales].talla, talla);
 	materiales[tamanyoMateriales].precio = precio;
 	strcpy(materiales[tamanyoMateriales].tipo, tipo);
@@ -187,7 +187,7 @@ int leerDatosMaterial(sqlite3 *db){
 			}
 		} while (result == SQLITE_ROW);
 		printf("------------------------------------------------------------------\n");
-		printf("\nEl fichero tiene %i estaciones\n", num_lines);
+		printf("\nLa base de datos tiene %i elementos\n", num_lines);
 
 
 
@@ -206,7 +206,7 @@ int leerDatosMaterial(sqlite3 *db){
 int insertNewMaterial(sqlite3 *db, char talla[], float precio, char tipo[], char estado[], int idEstacion, int idCliente) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "insert into MATERIAL (id, talla, precio, tipo, estado, id_estacion, id_cliente) values (NULL, ?, ?, ?, ?, ?, ?)";
+	char sql[] = "insert into MATERIAL (id, talla, precio, tipo, estado, id_estacion, id_cliente) values (?, ?, ?, ?, ?, ?, ?)";
 	int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	if (result != SQLITE_OK) {
 		printf("Error preparing statement (INSERT)\n");
@@ -222,11 +222,11 @@ int insertNewMaterial(sqlite3 *db, char talla[], float precio, char tipo[], char
 	}
 
 	result = sqlite3_bind_double(stmt, 2, idEstacion);
-		if (result != SQLITE_OK) {
-			printf("Error binding parameters\n");
-			printf("%s\n", sqlite3_errmsg(db));
-			return result;
-		}
+	if (result != SQLITE_OK) {
+		printf("Error binding parameters\n");
+		printf("%s\n", sqlite3_errmsg(db));
+		return result;
+	}
 
 	result = sqlite3_bind_text(stmt, 3, tipo, strlen(tipo) + 1, SQLITE_STATIC);
 	if (result != SQLITE_OK) {

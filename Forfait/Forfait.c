@@ -46,7 +46,7 @@ int leerDatosForfaits(sqlite3 *db) {
 		}
 	} while (result == SQLITE_ROW);
 	printf("------------------------------------------------------------------\n");
-	printf("\nEl fichero tiene %i estaciones\n", num_lines);
+	printf("\nLa base de datos tiene %i forfaits\n", num_lines);
 
 
 

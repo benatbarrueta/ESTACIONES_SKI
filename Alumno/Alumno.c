@@ -17,24 +17,31 @@ void anyadirAlumno(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int 
 
 	printf("\nSelecciona el id del cliente a añadir a las clases: ");
 	scanf("%i", &opcion);
+	printf("%i", opcion);
+	printf("%i", clientes[1].id);
 
 	for (int i = 0; i < tamanyoClientes; ++i) {
+//		printf("%i\n", clientes[i].id);
 		if(clientes[i].id == opcion ){
+//			printf("hola");
+
 			if (tamanyoAlumnos>0){
+//				printf("%i", alumnos[tamanyoAlumnos - 1].id++);
 				alumnos[tamanyoAlumnos].id = alumnos[tamanyoAlumnos - 1].id++;
 				alumnos[tamanyoAlumnos].idCliente = opcion;
-				alumnos[tamanyoAlumnos].apellido = clientes[i].apellido;
 				strcpy(alumnos[tamanyoAlumnos].nombre, clientes[i].nombre);
+				strcpy(alumnos[tamanyoAlumnos].apellido, clientes[i].apellido);
 				alumnos[tamanyoAlumnos].edad = clientes[i].edad;
 			} else if(tamanyoAlumnos == 0) {
 				alumnos[tamanyoAlumnos].id = 0;
 				alumnos[tamanyoAlumnos].idCliente = opcion;
 				strcpy(alumnos[tamanyoAlumnos].nombre, clientes[i].nombre);
-				alumnos[tamanyoAlumnos].apellido = clientes[i].apellido;
+				strcpy(alumnos[tamanyoAlumnos].apellido, clientes[i].apellido);
 				alumnos[tamanyoAlumnos].edad = clientes[i].edad;
 			}
 		}
 	}
+
 	char temp[8];
 	int dias = 0;
 	printf("Dias de clase: ");
@@ -64,8 +71,9 @@ void eliminarAlumno(Alumno* alumnos, int tamanyoAlumnos){
 			alumnos[i].edad = 0;
 			alumnos[i].idCliente = 0;
 			alumnos[i].pagado = NULL;
+			tamanyoAlumnos--;
 		} else {
-			printf("El alumno seleccionado no existe");
+			printf("El alumno seleccionado no existe\n");
 		}
 	}
 	escribirDatosAlumnos("alumnos.txt", alumnos, tamanyoAlumnos);
@@ -103,6 +111,8 @@ void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos){
     // Cerrar fichero
     fclose(f);
 }
+
+
 
 void leerDatosAlumnos(char* fichero){
 	printf("------------------------------------------------------------------------------------\n");

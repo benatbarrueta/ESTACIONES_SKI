@@ -9,7 +9,7 @@ typedef struct{
 	char* apellido;
 	char* correo;
 	int telefono;
-	char* edad;
+	int edad;
 	char* sexo;
 	int idEstacion;
 }Cliente;

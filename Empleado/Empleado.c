@@ -107,5 +107,5 @@ void leerDatosEmpleado(char* fichero){
 	fclose(f);
 
 	printf("\n-----------------------------------------------------------------------------------------------------------------------------------\n");
-	printf("\nEl fichero tiene %i líneas\n", num_lines);
+	printf("\nEl fichero tiene %i empleados\n", num_lines);
 }

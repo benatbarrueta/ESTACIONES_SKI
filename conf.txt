@@ -1,4 +1,4 @@
-db = estaciones.sqlite
-salidaAlumnos = alumnos.txt
-salidaClientes = clientes.txt
-salidaEmpleados = empleados.txt
+db=estaciones.sqlite
+salidaAlumnos=alumnos.txt
+salidaClientes=clientes.txt
+salidaEmpleados=empleados.txt

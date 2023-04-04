@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+#include "Estacion.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 int leerDatosEstaciones(sqlite3 *db) {
 	sqlite3_stmt *stmt;
 
@@ -38,7 +44,7 @@ int leerDatosEstaciones(sqlite3 *db) {
 		}
 	} while (result == SQLITE_ROW);
 	printf("------------------------------------------------------------------\n");
-	printf("\nEl fichero tiene %i estaciones\n", num_lines);
+	printf("\nLa base de datos tiene %i estaciones\n", num_lines);
 
 
 

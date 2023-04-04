@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "sqlite3.h"
 
-
 #include "Cliente/Cliente.h"
 #include "Empleado/Empleado.h"
 #include "Estacion/Estacion.h"
@@ -38,7 +37,7 @@ int main(){
 	empleados[5].id = 05;empleados[5].nombre = "Jimena";empleados[5].apellido = "Barrutia";empleados[5].salario = 2800;empleados[5].direccion = "Barcelona";empleados[5].puesto = "Profesor", empleados[5].telefono = 672829838;empleados[5].sexo = "F";empleados[5].idEstacion = 3;empleados[5].nivelPuesto = 2;empleados[5].nombreUsuario = "jimena";empleados[5].contrasenya = "3";
 	empleados[6].id = 06;empleados[6].nombre = "Manolo";empleados[6].apellido = "Vela";empleados[6].salario = 2000;empleados[6].direccion = "Madrid";empleados[6].puesto = "Limpieza", empleados[6].telefono = 618492039;empleados[6].sexo = "M";empleados[6].idEstacion = 1;empleados[6].nivelPuesto = 1;empleados[6].nombreUsuario = "manolo";empleados[6].contrasenya = "1";
 	empleados[7].id = 07;empleados[7].nombre = "Andrea";empleados[7].apellido = "Velarde";empleados[7].salario = 1789;empleados[7].direccion = "Granada";empleados[7].puesto = "Limpieza", empleados[7].telefono = 646638434;empleados[7].sexo = "F";empleados[7].idEstacion = 2;empleados[7].nivelPuesto = 1;empleados[7].nombreUsuario = "andrea";empleados[7].contrasenya = "3";
-//	empleados[8].id = 08;empleados[8].nombre = "Beñat";empleados[8].apellido = "Fernandez";empleados[8].salario = 1750;empleados[8].direccion = "Salamanca";empleados[8].puesto = "Limpieza", empleados[8].telefono = 617583204;empleados[8].sexo = "M";empleados[8].idEstacion = 3;empleados[8].nivelPuesto = 1;empleados[8].nombreUsuario = "beñat";empleados[8].contrasenya = "2";
+	empleados[8].id = 8;empleados[8].nombre = "Beñat";empleados[8].apellido = "Fernandez";empleados[8].salario = 1750;empleados[8].direccion = "Salamanca";empleados[8].puesto = "Limpieza", empleados[8].telefono = 617583204;empleados[8].sexo = "M";empleados[8].idEstacion = 3;empleados[8].nivelPuesto = 1;empleados[8].nombreUsuario = "beñat";empleados[8].contrasenya = "2";
 
 	Cliente* clientes;
 	clientes = malloc(sizeof(Cliente) * 29);
@@ -51,8 +50,8 @@ int main(){
 	clientes[5].id = 05;clientes[5].nombre = "Iker";clientes[5].apellido = "Gonzalo";clientes[5].correo = "ikergonzalo@gmail.com";clientes[5].edad = 43;clientes[5].idEstacion = 3;clientes[5].sexo = "F";clientes[5].telefono = 647382934;
 	clientes[6].id = 06;clientes[6].nombre = "Izaskun";clientes[6].apellido = "Verdejeo";clientes[6].correo = "izaskunverdejo@gmail.com";clientes[6].edad = 25;clientes[6].idEstacion = 1;clientes[6].sexo = "F";clientes[6].telefono = 637483948;
 	clientes[7].id = 07;clientes[7].nombre = "Jon Ander";clientes[7].apellido = "Oliver";clientes[7].correo = "jonanderoliver@gmail.com";clientes[7].edad = 46;clientes[7].idEstacion = 2;clientes[7].sexo = "F";clientes[7].telefono = 628454427;
-//	clientes[8].id = 08;clientes[8].nombre = "Itxaso";clientes[8].apellido = "Bilbao";clientes[8].correo = "itxasobilbao@gmail.com";clientes[8].edad = 7;clientes[8].idEstacion = 3;clientes[8].sexo = "F";clientes[8].telefono = 637483544;
-//	clientes[9].id = 09;clientes[9].nombre = "Ana";clientes[9].apellido = "Fernandez";clientes[9].correo = "anaferandez@gmail.com";clientes[9].edad = 21;clientes[9].idEstacion = 1;clientes[9].sexo = "F";clientes[9].telefono = 678937546;
+	clientes[8].id = 8;clientes[8].nombre = "Itxaso";clientes[8].apellido = "Bilbao";clientes[8].correo = "itxasobilbao@gmail.com";clientes[8].edad = 7;clientes[8].idEstacion = 3;clientes[8].sexo = "F";clientes[8].telefono = 637483544;
+	clientes[9].id = 9;clientes[9].nombre = "Ana";clientes[9].apellido = "Fernandez";clientes[9].correo = "anaferandez@gmail.com";clientes[9].edad = 21;clientes[9].idEstacion = 1;clientes[9].sexo = "F";clientes[9].telefono = 678937546;
 	clientes[10].id = 10;clientes[10].nombre = "Ane";clientes[10].apellido = "Martinez";clientes[10].correo = "anemartinez@gmail.com";clientes[10].edad = 30;clientes[10].idEstacion = 2;clientes[10].sexo = "F";clientes[10].telefono = 678535467;
 	clientes[11].id = 11;clientes[11].nombre = "Izaskun";clientes[11].apellido = "Verdejeo";clientes[11].correo = "izaskunverdejo@gmail.com";clientes[11].edad = 25;clientes[11].idEstacion = 1;clientes[11].sexo = "F";clientes[11].telefono = 637483948;
 	clientes[12].id = 12;clientes[12].nombre = "Beñat";clientes[12].apellido = "Barrutia";clientes[12].correo = "benatbarrutia@gmail.com";clientes[12].edad = 41;clientes[12].idEstacion = 3;clientes[12].sexo = "F";clientes[12].telefono = 65797424;
@@ -80,7 +79,35 @@ int main(){
 	alumnos[0].id = 1;alumnos[0].nombre = "Ana";alumnos[0].apellido = "Fernandez";alumnos[0].edad = 21;alumnos[0].diasClase = 3;alumnos[0].idCliente = 0;alumnos[0].pagado = "si";
 
 	escribirDatosAlumnos("alumnos.txt", alumnos, 1);
-	Material* materiales = NULL;
+	Material* materiales = malloc(sizeof(Material)*24);
+
+	materiales[0].id = 0;materiales[0].talla = "170";materiales[0].precio = 35.0;materiales[0].tipo = "SKI";materiales[0].estado = "ALQUILADO";materiales[0].idEstacion = 1; materiales[0].idCliente = 1;
+	materiales[1].id = 1;materiales[1].talla = "175";materiales[1].precio = 35.0;materiales[1].tipo = "SKI";materiales[1].estado = "NO ALQUILADO";materiales[1].idEstacion = 1;
+	materiales[2].id = 2;materiales[2].talla = "180";materiales[2].precio = 35.0;materiales[2].tipo = "SKI";materiales[2].estado = "ALQUILADO";materiales[2].idEstacion = 2; materiales[2].idCliente = 2;
+	materiales[3].id = 3;materiales[3].talla = "185";materiales[3].precio = 35.0;materiales[3].tipo = "SKI";materiales[3].estado = "NO ALQUILADO";materiales[3].idEstacion = 2;
+	materiales[4].id = 4;materiales[4].talla = "190";materiales[4].precio = 35.0;materiales[4].tipo = "SKI";materiales[4].estado = "ALQUILADO";materiales[4].idEstacion = 3; materiales[4].idCliente = 3;
+	materiales[5].id = 5;materiales[5].talla = "195";materiales[5].precio = 35.0;materiales[5].tipo = "SKI";materiales[5].estado = "NO ALQUILADO";materiales[5].idEstacion = 3;
+	materiales[6].id = 6;materiales[6].talla = "37";materiales[6].precio = 30.0;materiales[6].tipo = "BOTAS SKI";materiales[6].estado = "ALQUILADO";materiales[6].idEstacion = 1; materiales[6].idCliente = 1;
+	materiales[7].id = 7;materiales[7].talla = "38";materiales[7].precio = 30.0;materiales[7].tipo = "BOTAS SKI";materiales[7].estado = "NO ALQUILADO";materiales[7].idEstacion = 1;
+	materiales[8].id = 8;materiales[8].talla = "39";materiales[8].precio = 30.0;materiales[8].tipo = "BOTAS SKI";materiales[8].estado = "ALQUILADO";materiales[8].idEstacion = 2; materiales[8].idCliente = 2;
+	materiales[9].id = 9;materiales[9].talla = "40";materiales[9].precio = 30.0;materiales[9].tipo = "BOTAS SKI";materiales[9].estado = "NO ALQUILADO";materiales[9].idEstacion = 2;
+	materiales[10].id = 10;materiales[10].talla = "41";materiales[10].precio = 30.0;materiales[10].tipo = "BOTAS SKI";materiales[10].estado = "ALQUILADO";materiales[10].idEstacion = 3; materiales[10].idCliente = 3;
+	materiales[11].id = 11;materiales[11].talla = "42";materiales[11].precio = 30.0;materiales[11].tipo = "BOTAS SKI";materiales[11].estado = "NO ALQUILADO";materiales[11].idEstacion = 3;
+	materiales[12].id = 12;materiales[12].talla = "170";materiales[12].precio = 45.0;materiales[12].tipo = "SNOW";materiales[12].estado = "ALQUILADO";materiales[12].idEstacion = 1; materiales[12].idCliente = 1;
+	materiales[13].id = 13;materiales[13].talla = "175";materiales[13].precio = 45.0;materiales[13].tipo = "SNOW";materiales[13].estado = "NO ALQUILADO";materiales[13].idEstacion = 1;
+	materiales[14].id = 14;materiales[14].talla = "180";materiales[14].precio = 45.0;materiales[14].tipo = "SNOW";materiales[14].estado = "ALQUILADO";materiales[14].idEstacion = 2; materiales[14].idCliente = 2;
+	materiales[15].id = 15;materiales[15].talla = "185";materiales[15].precio = 45.0;materiales[15].tipo = "SNOW";materiales[15].estado = "NO ALQUILADO";materiales[15].idEstacion = 2;
+	materiales[16].id = 16;materiales[16].talla = "190";materiales[16].precio = 45.0;materiales[16].tipo = "SNOW";materiales[16].estado = "ALQUILADO";materiales[16].idEstacion = 3; materiales[16].idCliente = 3;
+	materiales[17].id = 17;materiales[17].talla = "195";materiales[17].precio = 45.0;materiales[17].tipo = "SNOW";materiales[17].estado = "NO ALQUILADO";materiales[17].idEstacion = 3;
+	materiales[18].id = 18;materiales[18].talla = "37";materiales[18].precio = 40.0;materiales[18].tipo = "BOTAS SNOW";materiales[18].estado = "ALQUILADO";materiales[18].idEstacion = 1; materiales[18].idCliente = 1;
+	materiales[19].id = 19;materiales[19].talla = "38";materiales[19].precio = 40.0;materiales[19].tipo = "BOTAS SNOW";materiales[19].estado = "NO ALQUILADO";materiales[19].idEstacion = 1;
+	materiales[20].id = 20;materiales[20].talla = "39";materiales[20].precio = 40.0;materiales[20].tipo = "BOTAS SNOW";materiales[20].estado = "ALQUILADO";materiales[20].idEstacion = 2; materiales[20].idCliente = 2;
+	materiales[21].id = 21;materiales[21].talla = "40";materiales[21].precio = 40.0;materiales[21].tipo = "BOTAS SNOW";materiales[21].estado = "NO ALQUILADO";materiales[21].idEstacion = 2;
+	materiales[22].id = 22;materiales[22].talla = "41";materiales[22].precio = 40.0;materiales[22].tipo = "BOTAS SNOW";materiales[22].estado = "ALQUILADO";materiales[22].idEstacion = 3; materiales[22].idCliente = 3;
+	materiales[23].id = 23;materiales[23].talla = "42";materiales[23].precio = 40.0;materiales[23].tipo = "BOTAS SNOW";materiales[23].estado = "NO ALQUILADO";materiales[23].idEstacion = 3;
+
+
+
 
 	Pista* pistas = malloc(sizeof(Pista)*27);
 
@@ -112,9 +139,9 @@ int main(){
 	pistas[25].id = 8;pistas[25].nombre = "Molina";pistas[25].dificultad = "Azul";pistas[25].idEstacion = 1;pistas[25].canyones = 1;pistas[25].numRemontes = 8;pistas[25].estado = "Activado";
 	pistas[26].id = 9;pistas[26].nombre = "Despeña";pistas[26].dificultad = "Negra";pistas[26].idEstacion = 1;pistas[26].canyones = 4;pistas[26].numRemontes = 2;pistas[26].estado = "Desactivado";
 
-	load_config("conf.txt", "db");
+//	load_config("conf.txt", "db");
 
-	ventanaInicial(empleados, 9, clientes, 1, alumnos, 1, materiales, 0, pistas, 27);
+	ventanaInicial(empleados, 9, clientes, 29, alumnos, 1, materiales, 0, pistas, 27);
 
 
 
@@ -128,11 +155,12 @@ int load_config(char* filename, char* buscar)
      char igual;
      char buscar2[20];
 
+     char resultado[100];
      archivo = fopen(filename, "r");
 
      if (archivo == NULL) {
     	 printf("Error al abrir el archivo.\n");
-    	 return 1;
+    	 return buscar;
      }
 
      while (fgets(linea, 100, archivo)) {
@@ -142,14 +170,16 @@ int load_config(char* filename, char* buscar)
     		 buscar2[i] = linea[i];
     		 i++;
     	 }
-
+    	 buscar2[i] = '\0';
 
     	 printf("%s\n", buscar2);
+
     	 if(strcmp(buscar, buscar2) == 0)
     	 {
     		 igual = strchr(linea, '=');
+
     		 if (igual != NULL) {
-    			 char resultado[100];
+
     			 strcpy(resultado, igual + 1);
     			 printf("%s", resultado);
     		 }
@@ -307,7 +337,7 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 		anyadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 2) {
-//		if(tamanyoAlumnos > 0) {
+		if(tamanyoAlumnos > 0) {
 			eliminarAlumno(alumnos, tamanyoAlumnos);
 			printf("Pulse 1 y enter para volver al menú: ");
 
@@ -317,14 +347,21 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 			if (opcion3 == 1){
 				gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 			}
-//		} else {
-//			printf("No hay alumnos en la lista, por tanto, no hay que eliminar");
-//			gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
-//		}
+		} else {
+			printf("No hay alumnos en la lista, por tanto, no hay que eliminar");
+			gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		}
 	} else if (opcion == 3) {
 		cambiarDatosAlumnos(alumnos, tamanyoAlumnos);
+		int opcion3 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion3);
+		if (opcion3 == 1){
+			gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		}
 	} else if (opcion == 4) {
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+
 	} else {
 		printf("\n");
 		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
@@ -362,6 +399,13 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 
 	} else if (opcion == 3) {
 		alquilarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+
+		int opcion3 = 0;
+		printf("Pulse 1 y enter para volver al menú: ");
+		scanf("%i", &opcion3);
+		if (opcion3 == 1){
+			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+		}
 	} else if (opcion == 4) {
 		gestionarEstacion(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else {
@@ -413,6 +457,19 @@ void gestionarPistas(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 				gestionarPistas(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 			}
 		} else if (opcion == 4){
+			sqlite3 *db;
+
+			int result = sqlite3_open("estaciones.sqlite", &db);
+			if (result != SQLITE_OK) {
+				printf("Error al abrir la base de datos\n");
+			}
+
+			result = leerDatosPistas(db);
+			if (result != SQLITE_OK) {
+				printf("Error obteniendo los materiales\n");
+				printf("%s\n", sqlite3_errmsg(db));
+			}
+
 			cambiarEstadoPistas(pistas, 27);
 
 			int opcion3 = 0;

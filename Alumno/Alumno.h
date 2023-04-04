@@ -19,6 +19,8 @@ void eliminarAlumno(Alumno* alumnos, int tamanyoAlumnos);
 
 void cambiarDatosAlumnos(Alumno* alumnos, int tamanyoAlumnos);
 
+void escribirDatosAlumnosAlFinal(char* fichero, Alumno* alumnos, int numAlumnos);
+
 void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos);
 
 void leerDatosAlumnos(char* fichero);

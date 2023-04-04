@@ -44,7 +44,7 @@ void anyadirPistas(Pista* pistas, int tamanyoPistas){
 	pistas[tamanyoPistas].canyones = numCanyones;
 	strcpy(pistas[tamanyoPistas].estado, "ACTIVADA");
 
-	char estado2[] = "ACTIVADA";
+	char estado2[] = "ACTIVADo";
 
 	sqlite3 *db;
 
@@ -92,12 +92,6 @@ void cambiarEstadoPistas(Pista* pistas, int tamanyoPistas){
 	int result = sqlite3_open("estaciones.sqlite", &db);
 	if (result != SQLITE_OK) {
 		printf("Error al abrir la base de datos\n");
-	}
-
-	result = leerDatosPistas(db);
-	if (result != SQLITE_OK) {
-		printf("Error obteniendo los materiales\n");
-		printf("%s\n", sqlite3_errmsg(db));
 	}
 
 	int opcion = 0;
@@ -158,7 +152,7 @@ int leerDatosPistasActivdas(sqlite3 *db) {
 		}
 	} while (result == SQLITE_ROW);
 	printf("\n------------------------------------------------------------------------------------------------------------------\n");
-	printf("\nEl fichero tiene %i pistas\n", num_lines);
+	printf("\nLa base de datos tiene %i pistas\n", num_lines);
 
 
 
@@ -214,7 +208,7 @@ int leerDatosPistas(sqlite3 *db) {
 		}
 	} while (result == SQLITE_ROW);
 	printf("\n----------------------------------------------------------------------------------------------------------------------------------------\n");
-	printf("\nEl fichero tiene %i pistas\n", num_lines);
+	printf("\nLa base de datos tiene %i pistas\n", num_lines);
 
 
 
@@ -270,7 +264,7 @@ int borrarDatosPistas(sqlite3 *db, int id) {
 int insertNewPista(sqlite3 *db, char nombre[], char dificultad[], int idEstacion, int num_canyones, int num_remontes, char estado[]) {
 	sqlite3_stmt *stmt;
 
-	char sql[] = "insert into PISTA (id, nombre, dificultad, id_estacion, num_canyones, num_remontes, estado) values (NULL, ?, ?, ?, ?, ?, ?)";
+	char sql[] = "insert into PISTA (id, nombre, dificultad, id_estacion, num_canyones, num_remontes, estado) values (?, ?, ?, ?, ?, ?, ?)";
 	int result = sqlite3_prepare_v2(db, sql, strlen(sql) + 1, &stmt, NULL) ;
 	if (result != SQLITE_OK) {
 		printf("Error preparing statement (INSERT)\n");
