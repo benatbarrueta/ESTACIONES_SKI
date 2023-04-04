@@ -351,7 +351,7 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 	} else if (opcion == 2) {
-		eliminarMaterial(materiales, tamanyoMateriales);
+		eliminarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
 
 		int opcion3 = 0;
 		printf("Pulse 1 y enter para volver al menú: ");
