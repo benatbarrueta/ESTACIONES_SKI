@@ -23,6 +23,8 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 
 void gestionarPistas(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas);
 
+int load_config(char* filename, char* buscar);
+
 int main(){
 
 	Empleado* empleados;
@@ -72,8 +74,12 @@ int main(){
 	clientes[28].id = 28;clientes[28].nombre = "Itxaso";clientes[28].apellido = "Bilbao";clientes[28].correo = "itxasobilbao@gmail.com";clientes[28].edad = 7;clientes[28].idEstacion = 3;clientes[28].sexo = "F";clientes[28].telefono = 637483544;
 
 
-	Alumno* alumnos = NULL;
+	Alumno* alumnos;
+	alumnos = malloc(sizeof(Alumno));
 
+	alumnos[0].id = 1;alumnos[0].nombre = "Ana";alumnos[0].apellido = "Fernandez";alumnos[0].edad = 21;alumnos[0].diasClase = 3;alumnos[0].idCliente = 0;alumnos[0].pagado = "si";
+
+	escribirDatosAlumnos("alumnos.txt", alumnos, 1);
 	Material* materiales = NULL;
 
 	Pista* pistas = malloc(sizeof(Pista)*27);
@@ -106,12 +112,54 @@ int main(){
 	pistas[25].id = 8;pistas[25].nombre = "Molina";pistas[25].dificultad = "Azul";pistas[25].idEstacion = 1;pistas[25].canyones = 1;pistas[25].numRemontes = 8;pistas[25].estado = "Activado";
 	pistas[26].id = 9;pistas[26].nombre = "Despeña";pistas[26].dificultad = "Negra";pistas[26].idEstacion = 1;pistas[26].canyones = 4;pistas[26].numRemontes = 2;pistas[26].estado = "Desactivado";
 
+	load_config("conf.txt", "db");
 
-	ventanaInicial(empleados, 9, clientes, 1, alumnos, 0, materiales, 0, pistas, 27);
+	ventanaInicial(empleados, 9, clientes, 1, alumnos, 1, materiales, 0, pistas, 27);
 
 
 
 	return 0;
+}
+
+int load_config(char* filename, char* buscar)
+{
+     FILE *archivo;
+     char linea[100];
+     char igual;
+     char buscar2[20];
+
+     archivo = fopen(filename, "r");
+
+     if (archivo == NULL) {
+    	 printf("Error al abrir el archivo.\n");
+    	 return 1;
+     }
+
+     while (fgets(linea, 100, archivo)) {
+
+    	 int i = 0;
+    	 while (linea[i] != '=') {
+    		 buscar2[i] = linea[i];
+    		 i++;
+    	 }
+
+
+    	 printf("%s\n", buscar2);
+    	 if(strcmp(buscar, buscar2) == 0)
+    	 {
+    		 igual = strchr(linea, '=');
+    		 if (igual != NULL) {
+    			 char resultado[100];
+    			 strcpy(resultado, igual + 1);
+    			 printf("%s", resultado);
+    		 }
+    	 }
+
+     }
+
+     fclose(archivo);
+
+    return 0;
 }
 
 void ventanaInicial(Empleado* empleados, int tamanyoEmpleados, Cliente* clientes, int tamanyoClientes, Alumno* alumnos, int tamanyoAlumnos, Material* materiales, int tamanyoMateriales, Pista* pistas, int tamanyoPistas){
@@ -259,7 +307,7 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 		anyadirAlumno(clientes, tamanyoClientes, alumnos, tamanyoAlumnos);
 		gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 	} else if (opcion == 2) {
-		if(tamanyoAlumnos > 0) {
+//		if(tamanyoAlumnos > 0) {
 			eliminarAlumno(alumnos, tamanyoAlumnos);
 			printf("Pulse 1 y enter para volver al menú: ");
 
@@ -269,10 +317,10 @@ void gestionarClases(Cliente* clientes, int tamanyoClientes, Alumno* alumnos, in
 			if (opcion3 == 1){
 				gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 			}
-		} else {
-			printf("No hay alumnos en la lista, por tanto, no hay que eliminar");
-			gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
-		}
+//		} else {
+//			printf("No hay alumnos en la lista, por tanto, no hay que eliminar");
+//			gestionarClases(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
+//		}
 	} else if (opcion == 3) {
 		cambiarDatosAlumnos(alumnos, tamanyoAlumnos);
 	} else if (opcion == 4) {
@@ -303,7 +351,7 @@ void gestionarMateriales(Cliente* clientes, int tamanyoClientes, Alumno* alumnos
 			gestionarMateriales(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales, pistas, tamanyoPistas);
 		}
 	} else if (opcion == 2) {
-		eliminarMaterial(clientes, tamanyoClientes, alumnos, tamanyoAlumnos, materiales, tamanyoMateriales);
+		eliminarMaterial(materiales, tamanyoMateriales);
 
 		int opcion3 = 0;
 		printf("Pulse 1 y enter para volver al menú: ");

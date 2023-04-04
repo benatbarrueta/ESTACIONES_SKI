@@ -97,7 +97,7 @@ void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos){
     f = fopen(fichero, "w");
 
     for (c = 0; c < numAlumnos; c++) {
-		fprintf(f, "%i %s         %i  %i dias    %s \n", alumnos[c].id, alumnos[c].nombre, alumnos[c].edad, alumnos[c].diasClase, alumnos[c].pagado);
+		fprintf(f, "%i  %s 	%i  %i dias    %s \n", alumnos[c].id, alumnos[c].nombre, alumnos[c].edad, alumnos[c].diasClase, alumnos[c].pagado);
 	}
 
     // Cerrar fichero
@@ -106,7 +106,7 @@ void escribirDatosAlumnos(char* fichero, Alumno* alumnos, int numAlumnos){
 
 void leerDatosAlumnos(char* fichero){
 	printf("------------------------------------------------------------------------------------\n");
-	printf("ID NOMBRE    EDAD DURACION PAGADO\n");
+	printf("ID NOMBRE EDAD DURACION PAGADO\n");
 	printf("------------------------------------------------------------------------------------\n");
 	FILE* f;
 	char c;
