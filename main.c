@@ -143,7 +143,10 @@ int main(){
 
 	ventanaInicial(empleados, 9, clientes, 29, alumnos, 1, materiales, 0, pistas, 27);
 
-
+	free(empleados);
+	free(clientes);
+	free(materiales);
+	free(pistas);
 
 	return 0;
 }
